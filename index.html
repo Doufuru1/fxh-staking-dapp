@@ -1637,15 +1637,12 @@
 
         // ===== CAROUSEL =====
         let currentSlide = 0;
-        const totalSlides = 4;
-        let carouselAuto;
+        const totalSlides = 1;
+        let carouselAuto = null;
 
         function updateCarousel() {
             const track = document.getElementById('carousel-track');
             track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
-            document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentSlide);
-            });
         }
 
         function nextSlide() {
@@ -1656,29 +1653,9 @@
         function goToSlide(n) {
             currentSlide = n;
             updateCarousel();
-            resetCarouselTimer();
         }
 
-        function resetCarouselTimer() {
-            clearInterval(carouselAuto);
-            carouselAuto = setInterval(nextSlide, 4000);
-        }
-
-        // Touch swipe for carousel
-        let touchStartX = 0;
-        const track = document.getElementById('carousel-track');
-        track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
-        track.addEventListener('touchend', e => {
-            const diff = touchStartX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 50) {
-                if (diff > 0 && currentSlide < totalSlides - 1) currentSlide++;
-                else if (diff < 0 && currentSlide > 0) currentSlide--;
-                updateCarousel();
-                resetCarouselTimer();
-            }
-        }, {passive:true});
-
-        carouselAuto = setInterval(nextSlide, 4000);
+        carouselAuto = null;
 
         // Tab Switching
         // Tab Switching
