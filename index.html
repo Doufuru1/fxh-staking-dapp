@@ -886,7 +886,7 @@
                         <div class="carousel-content">
                             <div class="carousel-tag">🔥 热门活动</div>
                             <div class="carousel-title">FXH 核心引擎质押</div>
-                            <div class="carousel-desc">深度驱动，稳定优先 | APR 高达 385.6%</div>
+                            <div class="carousel-desc">深度驱动,稳定优先 | APR 高达 385.6%</div>
                         </div>
                     </div>
                     <!-- Slide 2 -->
@@ -912,7 +912,7 @@
                         <div class="carousel-content">
                             <div class="carousel-tag" style="background:rgba(16,185,129,0.2); border-color:rgba(16,185,129,0.3)">✨ 新池上线</div>
                             <div class="carousel-title">FXH-ETH 流动性挖矿</div>
-                            <div class="carousel-desc">双币质押，双倍收益 | APR 512.3%</div>
+                            <div class="carousel-desc">双币质押,双倍收益 | APR 512.3%</div>
                         </div>
                     </div>
                     <!-- Slide 3 -->
@@ -1500,7 +1500,7 @@
         <div class="sheet-body">
             <div style="text-align:center;padding:8px 0 16px">
                 <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 12px;box-shadow:0 4px16px rgba(234,88,12,0.3)">🤝</div>
-                <div style="font-size:14px;color:var(--text-secondary);line-height:1.5">输入邀请人地址，绑定上下级关系<br>绑定后可获得额外团队奖励</div>
+                <div style="font-size:14px;color:var(--text-secondary);line-height:1.5">输入邀请人地址,绑定上下级关系<br>绑定后可获得额外团队奖励</div>
             </div>
 
             <div class="input-group" style="margin-bottom:12px">
@@ -1522,7 +1522,7 @@
             </button>
 
             <button class="btn btn-secondary btn-lg" onclick="skipBind()">
-                <span>⏭️</span> 暂无邀请人，跳过
+                <span>⏭️</span> 暂无邀请人,跳过
             </button>
         </div>
     </div>
@@ -1608,7 +1608,7 @@
         let balanceValue = 0;
         const balanceTarget = 12456.78;
         let balanceTimer = null;
-        
+
         function tickBalance() {
             const el = document.getElementById('balance-num');
             const el2 = document.getElementById('unclaimed-num');
@@ -1630,7 +1630,7 @@
                 el2.innerHTML = unclaimedVal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' <span>FXH</span>';
             }
         }
-        
+
         // Start fast roll (every 50ms) and stop once reached
         balanceTimer = setInterval(tickBalance, 50);
         tickBalance();
@@ -1706,7 +1706,7 @@
                 return;
             }
             closeBindModal();
-            showToast('邀请关系绑定成功！', 'success');
+            showToast('邀请关系绑定成功!', 'success');
         }
 
         function skipBind() {
@@ -1760,6 +1760,10 @@
         }
 
         // Sheet Controls
+        function openNodeSheet() {
+            showToast('节点功能开发中', 'success');
+        }
+
         function openStakeSheet() {
             document.getElementById('stake-overlay').classList.add('open');
             document.getElementById('stake-sheet').classList.add('open');
@@ -1791,16 +1795,16 @@
             const val = document.getElementById('stake-input').value;
             if (!val || val <= 0) { showToast('请输入质押数量', 'error'); return; }
             closeStakeSheet();
-            showToast('质押成功！+' + val + ' FXH', 'success');
+            showToast('质押成功!+' + val + ' FXH', 'success');
             document.getElementById('stake-input').value = '';
             document.getElementById('daily-est').textContent = '0 FXH';
         }
         function confirmClaim() {
             closeClaimSheet();
-            showToast('领取成功！+1,284.56 FXH', 'success');
+            showToast('领取成功!+1,284.56 FXH', 'success');
         }
         function claimAll() {
-            showToast('领取成功！+1,284.56 FXH', 'success');
+            showToast('领取成功!+1,284.56 FXH', 'success');
         }
 
         // Wallet
@@ -1822,7 +1826,7 @@
             const toast = document.getElementById('toast');
             const icon = document.getElementById('toast-icon');
             document.getElementById('toast-text').textContent = text;
-            icon.textContent = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
+            icon.textContent = type === 'success' ? '✅' : type === 'error' ? '❌' : 'i️';
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 2500);
         }
