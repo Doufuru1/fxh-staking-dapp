@@ -1,12 +1,5 @@
 {
   "version": 2,
-  "name": "fxh-staking-dapp",
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
   "routes": [
     {
       "src": "/(.*)",
