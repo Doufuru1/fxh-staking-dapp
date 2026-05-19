@@ -35,4 +35,6 @@
 参见项目根目录预览。
 
 ---
+🔗 在线演示：https://fxh-staking-dapp.vercel.app
+🐙 GitHub 仓库：https://github.com/Doufuru1/fxh-staking-dapp
 © 2025 FXH Protocol | 透明可查 • 规则公开 • 长期可持续
