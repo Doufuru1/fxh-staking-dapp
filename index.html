@@ -1489,6 +1489,44 @@
         </div>
     </div>
 
+    <!-- ===== BIND INVITE MODAL ===== -->
+    <div class="sheet-overlay" id="bind-overlay"></div>
+    <div class="sheet" id="bind-sheet" style="max-height:50vh;border-radius:var(--radius-xl) var(--radius-xl) 0 0">
+        <div class="sheet-handle"></div>
+        <div class="sheet-header">
+            <div class="sheet-title">🔗 绑定邀请关系</div>
+            <button class="sheet-close" onclick="skipBind()">✕</button>
+        </div>
+        <div class="sheet-body">
+            <div style="text-align:center;padding:8px 0 16px">
+                <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 12px;box-shadow:0 4px16px rgba(234,88,12,0.3)">🤝</div>
+                <div style="font-size:14px;color:var(--text-secondary);line-height:1.5">输入邀请人地址，绑定上下级关系<br>绑定后可获得额外团队奖励</div>
+            </div>
+
+            <div class="input-group" style="margin-bottom:12px">
+                <div class="input-label">
+                    <span>邀请人地址</span>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="bind-input" placeholder="0x..." maxlength="42">
+                </div>
+            </div>
+
+            <div class="quick-actions" style="margin-bottom:16px">
+                <button class="chip" onclick="pasteBind()">📋 粘贴</button>
+                <button class="chip" onclick="scanBind()">📷 扫码</button>
+            </div>
+
+            <button class="btn btn-primary btn-lg" style="margin-bottom:10px" onclick="confirmBind()">
+                <span>🔗</span> 确认绑定
+            </button>
+
+            <button class="btn btn-secondary btn-lg" onclick="skipBind()">
+                <span>⏭️</span> 暂无邀请人，跳过
+            </button>
+        </div>
+    </div>
+
     <!-- ===== CLAIM SHEET ===== -->
     <div class="sheet-overlay" id="claim-overlay" onclick="closeClaimSheet()"></div>
     <div class="sheet" id="claim-sheet">
@@ -1637,14 +1675,53 @@
         carouselAuto = setInterval(nextSlide, 4000);
 
         // Tab Switching
-        function switchTab(tab) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
-            document.getElementById('page-' + tab).classList.add('active');
-            event.currentTarget.classList.add('active');
+        function openBindModal() {
+            document.getElementById('bind-overlay').classList.add('open');
+            document.getElementById('bind-sheet').classList.add('open');
         }
 
-        function copyInvite() {
+        function closeBindModal() {
+            document.getElementById('bind-overlay').classList.remove('open');
+            document.getElementById('bind-sheet').classList.remove('open');
+        }
+
+        function confirmBind() {
+            const addr = document.getElementById('bind-input').value.trim();
+            if (!addr || addr.length < 10) {
+                showToast('请输入有效的邀请地址', 'error');
+                return;
+            }
+            closeBindModal();
+            showToast('邀请关系绑定成功！', 'success');
+        }
+
+        function skipBind() {
+            closeBindModal();
+            showToast('可随时在邀请页面绑定', 'success');
+        }
+
+        function pasteBind() {
+            if (navigator.clipboard) {
+                navigator.clipboard.readText().then(text => {
+                    document.getElementById('bind-input').value = text;
+                    showToast('已粘贴', 'success');
+                }).catch(() => showToast('粘贴失败', 'error'));
+            } else {
+                showToast('请手动输入', 'error');
+            }
+        }
+
+        function scanBind() {
+            showToast('扫码功能开发中', 'success');
+        }
+
+        // Show bind modal on first visit
+        setTimeout(() => {
+            if (!localStorage.getItem('bind-shown')) {
+                openBindModal();
+                localStorage.setItem('bind-shown', '1');
+            }
+        }, 800);
             const link = document.getElementById('invite-link').textContent;
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(link).then(() => showToast('邀请链接已复制', 'success'));
