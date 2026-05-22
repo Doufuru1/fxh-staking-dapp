@@ -13,11 +13,11 @@
             --bg-surface: #1a1a2e;
             --bg-card: #22223a;
             --bg-hover: #2a2a48;
-            --accent: #f59e0b;
-            --accent-light: #fbbf24;
-            --accent-dark: #d97706;
-            --accent-ghost: rgba(245, 158, 11, 0.1);
-            --accent-ghost-strong: rgba(245, 158, 11, 0.18);
+            --accent: #fc5b23;
+            --accent-light: #fd7c4f;
+            --accent-dark: #e04a12;
+            --accent-ghost: rgba(252, 91, 35, 0.1);
+            --accent-ghost-strong: rgba(252, 91, 35, 0.18);
             --text: #f8fafc;
             --text-secondary: #94a3b8;
             --text-muted: #64748b;
@@ -28,7 +28,7 @@
             --shadow-sm: 0 1px 2px rgba(0,0,0,0.3), 0 0 0 1px var(--border-light);
             --shadow-md: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 1px var(--border);
             --shadow-lg: 0 12px 32px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
-            --shadow-accent: 0 8px 24px rgba(245, 158, 11, 0.2);
+            --shadow-accent: 0 8px 24px rgba(252, 91, 35, 0.2);
             --radius-sm: 12px;
             --radius-md: 16px;
             --radius-lg: 20px;
@@ -99,7 +99,7 @@
         }
 
         .app-title span {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            background: linear-gradient(135deg, #fd7c4f, #fc5b23);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -123,7 +123,7 @@
         .header-action:active {
             transform: scale(0.92);
             background: var(--accent-ghost);
-            border-color: rgba(245, 158, 11, 0.2);
+            border-color: rgba(252, 91, 35, 0.2);
         }
 
         /* ===== CAROUSEL ===== */
@@ -293,11 +293,11 @@
         .btn:active::before { opacity: 1; }
 
         .btn-primary {
-            background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+            background: linear-gradient(135deg, #fc5b23 0%, #e04a12 100%);
             color: #fff;
             box-shadow:
                 0 1px 0 rgba(255,255,255,0.15) inset,
-                0 4px 16px rgba(234, 88, 12, 0.35),
+                0 4px 16px rgba(224, 74, 18, 0.35),
                 0 1px 2px rgba(0,0,0,0.2);
         }
 
@@ -308,7 +308,7 @@
         .btn-primary:active {
             box-shadow:
                 0 1px 0 rgba(255,255,255,0.1) inset,
-                0 2px 8px rgba(234, 88, 12, 0.25);
+                0 2px 8px rgba(224, 74, 18, 0.25);
         }
 
         .btn-secondary {
@@ -327,7 +327,7 @@
         .btn-ghost {
             background: var(--accent-ghost);
             color: var(--accent);
-            border: 1px solid rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(252, 91, 35, 0.15);
         }
 
         .btn-lg {
@@ -472,13 +472,13 @@
             width: 52px;
             height: 52px;
             border-radius: var(--radius-md);
-            background: linear-gradient(135deg, #f59e0b, #ea580c);
+            background: linear-gradient(135deg, #fc5b23, #e04a12);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 26px;
             flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+            box-shadow: 0 4px 12px rgba(224, 74, 18, 0.25);
         }
 
         .pool-info { flex: 1; }
@@ -501,7 +501,7 @@
         .pool-apr-value {
             font-size: 22px;
             font-weight: 800;
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            background: linear-gradient(135deg, #fd7c4f, #fc5b23);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-family: 'Inter', sans-serif;
@@ -565,7 +565,7 @@
             font-size: 13px;
             font-weight: 700;
             color: var(--accent);
-            border: 1px solid rgba(245,158,11,0.12);
+            border: 1px solid rgba(252, 91, 35,0.12);
         }
 
         /* Chips */
@@ -593,7 +593,7 @@
         .chip:active {
             background: var(--accent-ghost);
             color: var(--accent);
-            border-color: rgba(245,158,11,0.2);
+            border-color: rgba(252, 91, 35,0.2);
             transform: scale(0.95);
         }
 
@@ -751,7 +751,7 @@
         }
 
         .toggle.on {
-            background: linear-gradient(135deg, #f59e0b, #ea580c);
+            background: linear-gradient(135deg, #fc5b23, #e04a12);
             border-color: transparent;
         }
 
@@ -781,10 +781,10 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #f59e0b, #ea580c);
+            background: linear-gradient(90deg, #fc5b23, #e04a12);
             border-radius: 3px;
             transition: width 0.5s ease;
-            box-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 0 8px rgba(252, 91, 35, 0.3);
         }
 
         /* ===== SYSTEM HEALTH ===== */
@@ -863,7 +863,7 @@
             font-weight: 700;
             color: var(--accent);
             background: var(--accent-ghost);
-            border: 1px solid rgba(245,158,11,0.12);
+            border: 1px solid rgba(252, 91, 35,0.12);
             padding: 2px 8px;
             border-radius: 10px;
             white-space: nowrap;
@@ -912,7 +912,7 @@
             border-left: 3px solid var(--accent);
         }
         .tb-row.highlight {
-            background: linear-gradient(90deg, rgba(245,158,11,0.08), transparent);
+            background: linear-gradient(90deg, rgba(252, 91, 35,0.08), transparent);
         }
         .tb-row span:first-child { text-align: left; }
         .tb-range {
@@ -1104,7 +1104,7 @@
             border-color: var(--accent);
             background: var(--accent-ghost);
             color: var(--accent);
-            box-shadow: 0 0 0 1px var(--accent), 0 4px 12px rgba(245,158,11,0.15);
+            box-shadow: 0 0 0 1px var(--accent), 0 4px 12px rgba(252, 91, 35,0.15);
         }
         .deposit-mode-btn:not(.active):hover {
             border-color: var(--border);
@@ -1222,7 +1222,7 @@
             left: -40%;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(245,158,11,0.04) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(252, 91, 35,0.04) 0%, transparent 60%);
             pointer-events: none;
             z-index: 0;
         }
@@ -1233,7 +1233,7 @@
             right: -30%;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(234,88,12,0.03) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(224, 74, 18,0.03) 0%, transparent 60%);
             pointer-events: none;
             z-index: 0;
         }
@@ -1266,13 +1266,13 @@
                                         <stop offset="100%" style="stop-color:#1a1a3e"/>
                                     </linearGradient>
                                     <linearGradient id="grad1b" x1="0%" y1="100%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:rgba(245,158,11,0.3)"/>
-                                        <stop offset="100%" style="stop-color:rgba(234,88,12,0.1)"/>
+                                        <stop offset="0%" style="stop-color:rgba(252, 91, 35,0.3)"/>
+                                        <stop offset="100%" style="stop-color:rgba(224, 74, 18,0.1)"/>
                                     </linearGradient>
                                 </defs>
                                 <rect width="400" height="180" fill="url(#grad1)"/>
                                 <circle cx="320" cy="40" r="80" fill="url(#grad1b)" opacity="0.6"/>
-                                <circle cx="60" cy="150" r="50" fill="rgba(245,158,11,0.1)"/>
+                                <circle cx="60" cy="150" r="50" fill="rgba(252, 91, 35,0.1)"/>
                             </svg>
                         </div>
                         <div class="carousel-content">
@@ -1319,12 +1319,12 @@
                                     </linearGradient>
                                     <linearGradient id="grad3b" x1="100%" y1="0%" x2="0%" y2="100%">
                                         <stop offset="0%" style="stop-color:rgba(168,85,247,0.2)"/>
-                                        <stop offset="100%" style="stop-color:rgba(245,158,11,0.15)"/>
+                                        <stop offset="100%" style="stop-color:rgba(252, 91, 35,0.15)"/>
                                     </linearGradient>
                                 </defs>
                                 <rect width="400" height="180" fill="url(#grad3)"/>
                                 <circle cx="80" cy="60" r="70" fill="url(#grad3b)" opacity="0.5"/>
-                                <polygon points="400,0 350,0 400,60" fill="rgba(245,158,11,0.1)"/>
+                                <polygon points="400,0 350,0 400,60" fill="rgba(252, 91, 35,0.1)"/>
                             </svg>
                         </div>
                         <div class="carousel-content">
@@ -1670,7 +1670,7 @@
                 <div style="padding:0 0 8px">
                     <!-- Record 1 -->
                     <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
-                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(245,158,11,0.15)">💎</div>
+                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(252, 91, 35,0.15)">💎</div>
                         <div class="pool-info">
                             <div class="pool-name">领取收益</div>
                             <div class="pool-meta">2025-05-19 10:32 · 质押挖矿</div>
@@ -1682,7 +1682,7 @@
                     </div>
                     <!-- Record 2 -->
                     <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
-                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(245,158,11,0.15)">💎</div>
+                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(252, 91, 35,0.15)">💎</div>
                         <div class="pool-info">
                             <div class="pool-name">领取收益</div>
                             <div class="pool-meta">2025-05-18 08:15 · 团队奖励</div>
@@ -1694,7 +1694,7 @@
                     </div>
                     <!-- Record 3 -->
                     <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
-                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(245,158,11,0.15)">💎</div>
+                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(252, 91, 35,0.15)">💎</div>
                         <div class="pool-info">
                             <div class="pool-name">领取收益</div>
                             <div class="pool-meta">2025-05-17 14:22 · 创世节点</div>
@@ -1706,7 +1706,7 @@
                     </div>
                     <!-- Record 4 -->
                     <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
-                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(245,158,11,0.15)">💎</div>
+                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(252, 91, 35,0.15)">💎</div>
                         <div class="pool-info">
                             <div class="pool-name">领取收益</div>
                             <div class="pool-meta">2025-05-16 09:45 · 质押挖矿</div>
@@ -1718,7 +1718,7 @@
                     </div>
                     <!-- Record 5 -->
                     <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
-                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(245,158,11,0.15)">💎</div>
+                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(252, 91, 35,0.15)">💎</div>
                         <div class="pool-info">
                             <div class="pool-name">领取收益</div>
                             <div class="pool-meta">2025-05-15 11:08 · 团队奖励</div>
@@ -1891,7 +1891,7 @@
                         </div>
                         <div class="mining-split-item">
                             <div class="mining-split-left">
-                                <div class="mining-split-icon" style="background:linear-gradient(135deg,#f59e0b,#ea580c);color:#fff;box-shadow:0 4px 12px rgba(245,158,11,0.35);font-size:14px">🔥</div>
+                                <div class="mining-split-icon" style="background:linear-gradient(135deg,#fc5b23,#e04a12);color:#fff;box-shadow:0 4px 12px rgba(252, 91, 35,0.35);font-size:14px">🔥</div>
                                 <div>
                                     <div class="mining-split-title">加入 LP（50%）</div>
                                     <div class="mining-split-desc">LP 即刻销毁（增强深度）</div>
@@ -1939,7 +1939,7 @@
                 </div>
                 <div style="padding:0 0 8px">
                     <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
-                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;box-shadow:0 4px 12px rgba(245,158,11,0.35);color:#fff">⚡</div>
+                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#fc5b23,#e04a12);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;box-shadow:0 4px 12px rgba(252, 91, 35,0.35);color:#fff">⚡</div>
                         <div class="pool-info">
                             <div class="pool-name">5,000 USDT · 运行中</div>
                             <div class="pool-meta">2025-05-19 · 剩余 18 天</div>
@@ -1960,7 +1960,7 @@
             <!-- Profile Header -->
             <div class="card" style="margin:0 16px 12px">
                 <div style="padding:18px;display:flex;align-items:center;gap:14px">
-                    <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 4px 16px rgba(234,88,12,0.3)">👤</div>
+                    <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#fc5b23,#e04a12);display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 4px 16px rgba(224, 74, 18,0.3)">👤</div>
                     <div style="flex:1">
                         <div style="font-size:16px;font-weight:700;color:var(--text)">0x7a3c...f82e</div>
                         <div style="font-size:12px;color:var(--text-muted);margin-top:2px">创世节点 · 128 人团队</div>
@@ -2239,7 +2239,7 @@
                 </div>
                 <div style="padding:0 0 8px">
                     <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
-                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(245,158,11,0.15)">💱</div>
+                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(252, 91, 35,0.15)">💱</div>
                         <div class="pool-info">
                             <div class="pool-name">USDT → FXH</div>
                             <div class="pool-meta">2025-05-19 14:32 · 0x7a3c...f82e</div>
@@ -2250,7 +2250,7 @@
                         </div>
                     </div>
                     <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
-                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(245,158,11,0.15)">💱</div>
+                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(252, 91, 35,0.15)">💱</div>
                         <div class="pool-info">
                             <div class="pool-name">FXH → USDT</div>
                             <div class="pool-meta">2025-05-18 09:15 · 0x7a3c...f82e</div>
@@ -2277,7 +2277,7 @@
                 <div style="padding:0 18px 18px">
                     <!-- Benefit 1 -->
                     <div class="node-benefit-row">
-                        <div class="node-benefit-icon" style="background:rgba(245,158,11,0.15);color:var(--accent)">📈</div>
+                        <div class="node-benefit-icon" style="background:rgba(252, 91, 35,0.15);color:var(--accent)">📈</div>
                         <div class="node-benefit-info">
                             <div class="node-benefit-title">每日静态收益</div>
                             <div class="node-benefit-desc">根据 LP 深度自动匹配档位</div>
@@ -2500,7 +2500,7 @@
         </div>
         <div class="sheet-body">
             <div style="text-align:center;padding:8px 0 16px">
-                <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 12px;box-shadow:0 4px16px rgba(234,88,12,0.3)">🤝</div>
+                <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#fc5b23,#e04a12);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 12px;box-shadow:0 4px16px rgba(224, 74, 18,0.3)">🤝</div>
                 <div style="font-size:14px;color:var(--text-secondary);line-height:1.5">输入邀请人地址,绑定上下级关系<br>绑定后可获得额外团队奖励</div>
             </div>
 
@@ -2538,7 +2538,7 @@
         </div>
         <div class="sheet-body">
             <div style="text-align:center;padding:16px 0 8px">
-                <div style="font-size:38px;font-weight:800;background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Inter',sans-serif;letter-spacing:-1px">1,284.56</div>
+                <div style="font-size:38px;font-weight:800;background:linear-gradient(135deg,#fd7c4f,#fc5b23);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Inter',sans-serif;letter-spacing:-1px">1,284.56</div>
                 <div style="font-size:13px;color:var(--text-secondary);margin-top:4px">USDT 可领取</div>
             </div>
 
@@ -2585,7 +2585,7 @@
         <div class="sheet-body">
             <div style="text-align:center;padding:16px 0 8px">
                 <div style="font-size:13px;color:var(--text-secondary)">可兑换 USDT 收益</div>
-                <div style="font-size:38px;font-weight:800;background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Inter',sans-serif;letter-spacing:-1px">1,284.56</div>
+                <div style="font-size:38px;font-weight:800;background:linear-gradient(135deg,#fd7c4f,#fc5b23);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Inter',sans-serif;letter-spacing:-1px">1,284.56</div>
                 <div style="font-size:11px;color:var(--text-muted);margin-top:4px">⚠️ 每7天可兑换一次 · 下次兑换: 5天 12小时后</div>
             </div>
 
@@ -2626,7 +2626,7 @@
         <div class="sheet-body">
             <div style="text-align:center;padding:16px 0 8px">
                 <div style="font-size:13px;color:var(--text-secondary)">FXH 余额</div>
-                <div style="font-size:38px;font-weight:800;background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Inter',sans-serif;letter-spacing:-1px" id="withdraw-balance-display">12,456.78</div>
+                <div style="font-size:38px;font-weight:800;background:linear-gradient(135deg,#fd7c4f,#fc5b23);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Inter',sans-serif;letter-spacing:-1px" id="withdraw-balance-display">12,456.78</div>
                 <div style="font-size:13px;color:var(--text-secondary);margin-top:4px">≈ $1,245.68</div>
             </div>
 
