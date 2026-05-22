@@ -1081,6 +1081,35 @@
         .mining-info-row:last-child {
             border-bottom: none;
         }
+
+        /* ===== DEPOSIT MODE SELECTOR ===== */
+        .deposit-mode-btn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 12px 8px;
+            border-radius: 12px;
+            border: 1.5px solid var(--border);
+            background: var(--bg-surface);
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        .deposit-mode-btn.active {
+            border-color: var(--accent);
+            background: var(--accent-ghost);
+            color: var(--accent);
+            box-shadow: 0 0 0 1px var(--accent), 0 4px 12px rgba(245,158,11,0.15);
+        }
+        .deposit-mode-btn:not(.active):hover {
+            border-color: var(--border);
+            background: var(--bg-hover);
+        }
         .mining-info-label {
             display: flex;
             align-items: center;
@@ -1800,16 +1829,45 @@
                         余额：<strong style="color:var(--text)">0 USDT</strong>
                     </div>
 
+                    <!-- Deposit Mode Selector -->
+                    <div style="margin-bottom:14px">
+                        <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;font-weight:600">入金方式</div>
+                        <div style="display:flex;gap:8px">
+                            <button class="deposit-mode-btn active" id="mode-u" onclick="switchDepositMode('u')">
+                                <span style="font-size:16px">💵</span>
+                                <div>单纯用U</div>
+                            </button>
+                            <button class="deposit-mode-btn" id="mode-mix" onclick="switchDepositMode('mix')">
+                                <span style="font-size:16px">⚖️</span>
+                                <div>U和币各一半</div>
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- Amount Input -->
                     <div class="input-group" style="margin:0 0 14px">
                         <div class="input-label">
-                            <span>输入金额（USDT）</span>
+                            <span id="input-label-u">输入金额（USDT）</span>
+                            <span id="input-label-mix" style="display:none">USDT 金额</span>
                         </div>
                         <div class="input-field">
                             <span style="font-size:18px;color:var(--text-muted);font-weight:600">$</span>
                             <input type="number" id="mining-input" placeholder="100 - 10000" oninput="calcMiningSplit(this.value)" style="font-size:20px">
                             <div class="input-token">
                                 <span>USDT</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Token Input (mix mode only) -->
+                    <div class="input-group" id="token-input-group" style="margin:0 0 14px;display:none">
+                        <div class="input-label">
+                            <span>FXH 代币金额（价值等值USDT）</span>
+                        </div>
+                        <div class="input-field">
+                            <input type="number" id="mining-token-input" placeholder="与USDT等值" oninput="calcMiningSplitMix()" style="font-size:20px">
+                            <div class="input-token">
+                                <span>FXH</span>
                             </div>
                         </div>
                     </div>
@@ -2897,6 +2955,23 @@
         }
 
         // Mining
+        let depositMode = 'u'; // 'u' or 'mix'
+
+        function switchDepositMode(mode) {
+            depositMode = mode;
+            document.getElementById('mode-u').classList.toggle('active', mode === 'u');
+            document.getElementById('mode-mix').classList.toggle('active', mode === 'mix');
+            document.getElementById('input-label-u').style.display = mode === 'u' ? '' : 'none';
+            document.getElementById('input-label-mix').style.display = mode === 'mix' ? '' : 'none';
+            document.getElementById('token-input-group').style.display = mode === 'mix' ? '' : 'none';
+            
+            // Reset values
+            document.getElementById('mining-input').value = '';
+            document.getElementById('mining-token-input').value = '';
+            document.getElementById('mining-buy').textContent = '0';
+            document.getElementById('mining-lp').textContent = '0';
+        }
+
         function calcMiningSplit(val) {
             const buyEl = document.getElementById('mining-buy');
             const lpEl = document.getElementById('mining-lp');
@@ -2905,20 +2980,43 @@
                 if (lpEl) lpEl.textContent = '0';
                 return;
             }
-            const half = (val * 0.5).toFixed(0);
-            if (buyEl) buyEl.textContent = Number(half).toLocaleString();
-            if (lpEl) lpEl.textContent = Number(half).toLocaleString();
+            if (depositMode === 'mix') {
+                // U和币各一半: USDT + 代币 = 总值, 各50%
+                const tokenVal = document.getElementById('mining-token-input').value || 0;
+                const total = Number(val) + Number(tokenVal);
+                const half = (total * 0.5).toFixed(0);
+                if (buyEl) buyEl.textContent = Number(half).toLocaleString();
+                if (lpEl) lpEl.textContent = Number(half).toLocaleString();
+            } else {
+                // 单纯用U
+                const half = (val * 0.5).toFixed(0);
+                if (buyEl) buyEl.textContent = Number(half).toLocaleString();
+                if (lpEl) lpEl.textContent = Number(half).toLocaleString();
+            }
+        }
+
+        function calcMiningSplitMix() {
+            // Trigger recalculation from USDT input when token input changes
+            const usdtVal = document.getElementById('mining-input').value;
+            if (usdtVal) calcMiningSplit(usdtVal);
         }
         function confirmMiningOrder() {
             const val = document.getElementById('mining-input').value;
             if (!val || val < 100) { showToast('最低投入 100 USDT', 'error'); return; }
             if (val > 10000) { showToast('单笔最高 10,000 USDT', 'error'); return; }
+            
             const buy = (val * 0.5).toFixed(0);
             const lp = (val * 0.5).toFixed(0);
             document.getElementById('mining-input').value = '';
+            document.getElementById('mining-token-input').value = '';
             document.getElementById('mining-buy').textContent = '0';
             document.getElementById('mining-lp').textContent = '0';
-            showToast('订单创建成功! ' + buy + ' USDT 买入 + ' + lp + ' USDT LP销毁', 'success');
+            
+            if (depositMode === 'mix') {
+                showToast('订单创建成功! ' + buy + ' USDT + ' + buy + ' FXH 等值入金, LP即刻销毁', 'success');
+            } else {
+                showToast('订单创建成功! ' + buy + ' USDT 买入 + ' + lp + ' USDT LP销毁', 'success');
+            }
         }
 
         // Node
