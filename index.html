@@ -1835,11 +1835,11 @@
                         <div style="display:flex;gap:8px">
                             <button class="deposit-mode-btn active" id="mode-u" onclick="switchDepositMode('u')">
                                 <span style="font-size:16px">💵</span>
-                                <div>单纯用U</div>
+                                <div>全部用U</div>
                             </button>
                             <button class="deposit-mode-btn" id="mode-mix" onclick="switchDepositMode('mix')">
                                 <span style="font-size:16px">⚖️</span>
-                                <div>U和币各一半</div>
+                                <div>50% FXH + 50% U</div>
                             </button>
                         </div>
                     </div>
@@ -1878,8 +1878,8 @@
                             <div class="mining-split-left">
                                 <div class="mining-split-icon" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;box-shadow:0 4px 12px rgba(59,130,246,0.35);font-size:14px">💎</div>
                                 <div>
-                                    <div class="mining-split-title">买入 FXH（50%）</div>
-                                    <div class="mining-split-desc">系统自动化买入</div>
+                                    <div class="mining-split-title" id="split-title-1">买入 FXH（50%）</div>
+                                    <div class="mining-split-desc" id="split-desc-1">系统自动化买入</div>
                                 </div>
                             </div>
                             <div class="mining-split-amount" id="mining-buy">0</div>
@@ -1893,8 +1893,8 @@
                             <div class="mining-split-left">
                                 <div class="mining-split-icon" style="background:linear-gradient(135deg,#fc5b23,#e04a12);color:#fff;box-shadow:0 4px 12px rgba(252, 91, 35,0.35);font-size:14px">🔥</div>
                                 <div>
-                                    <div class="mining-split-title">加入 LP（50%）</div>
-                                    <div class="mining-split-desc">LP 即刻销毁（增强深度）</div>
+                                    <div class="mining-split-title" id="split-title-2">加入 LP（50%）</div>
+                                    <div class="mining-split-desc" id="split-desc-2">LP 即刻销毁（增强深度）</div>
                                 </div>
                             </div>
                             <div class="mining-split-amount" id="mining-lp">0</div>
@@ -2965,6 +2965,19 @@
             document.getElementById('input-label-mix').style.display = mode === 'mix' ? '' : 'none';
             document.getElementById('token-input-group').style.display = mode === 'mix' ? '' : 'none';
             
+            // Update split labels
+            if (mode === 'mix') {
+                document.getElementById('split-title-1').textContent = 'USDT 部分（50%）';
+                document.getElementById('split-desc-1').textContent = '用户提供的 USDT';
+                document.getElementById('split-title-2').textContent = 'FXH 部分（50%）';
+                document.getElementById('split-desc-2').textContent = '用户提供的 FXH（等值USDT）';
+            } else {
+                document.getElementById('split-title-1').textContent = '买入 FXH（50%）';
+                document.getElementById('split-desc-1').textContent = '系统自动化买入';
+                document.getElementById('split-title-2').textContent = '加入 LP（50%）';
+                document.getElementById('split-desc-2').textContent = 'LP 即刻销毁（增强深度）';
+            }
+            
             // Reset values
             document.getElementById('mining-input').value = '';
             document.getElementById('mining-token-input').value = '';
@@ -3175,7 +3188,7 @@
         }
 
         // Pool
-        function selectPool(pool) { openStakeSheet(); }
+        function selectPool(pool) { switchTab('mining'); }
     </script>
 </body>
 </html>
