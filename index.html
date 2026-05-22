@@ -731,7 +731,9 @@
 
         .tab-item.active { color: var(--accent); }
 
-        .tab-icon { font-size: 22px; line-height: 1; }
+        .tab-icon { font-size: 22px; line-height: 1; transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .tab-icon.pop { transform: scale(1.4); }
+        .tab-item:active .tab-icon { transform: scale(0.9); }
 
         .tab-label { font-size: 10px; font-weight: 700; letter-spacing: 0.5px; }
 
@@ -783,6 +785,367 @@
             border-radius: 3px;
             transition: width 0.5s ease;
             box-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
+        }
+
+        /* ===== SYSTEM HEALTH ===== */
+        .health-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .health-info { flex: 1; }
+        .health-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: 0.2px;
+        }
+        .health-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .health-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.5px;
+        }
+        .health-badge {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--success);
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .health-bar {
+            height: 4px;
+            background: var(--bg-surface);
+            border-radius: 2px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+        .health-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            transition: width 0.6s ease;
+        }
+
+        /* ===== CORE ENGINES ===== */
+        .engine-item {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 4px;
+        }
+        .engine-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .engine-icon {
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .engine-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            flex: 1;
+            letter-spacing: 0.2px;
+        }
+        .engine-tag {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent);
+            background: var(--accent-ghost);
+            border: 1px solid rgba(245,158,11,0.12);
+            padding: 2px 8px;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+        .engine-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding-left: 26px;
+        }
+
+        /* ===== TURBOBOOST TABLE ===== */
+        .turboboost-table {
+            background: var(--bg-surface);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+        .tb-header {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr 0.8fr 0.8fr;
+            gap: 6px;
+            padding: 10px 12px;
+            background: var(--bg-card);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            text-align: center;
+        }
+        .tb-header span:first-child { text-align: left; }
+        .tb-row {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr 0.8fr 0.8fr;
+            gap: 6px;
+            padding: 10px 12px;
+            font-size: 12px;
+            border-bottom: 1px solid var(--border-light);
+            text-align: center;
+            align-items: center;
+        }
+        .tb-row:last-child { border-bottom: none; }
+        .tb-row.active {
+            background: var(--accent-ghost);
+            border-left: 3px solid var(--accent);
+        }
+        .tb-row.highlight {
+            background: linear-gradient(90deg, rgba(245,158,11,0.08), transparent);
+        }
+        .tb-row span:first-child { text-align: left; }
+        .tb-range {
+            font-weight: 600;
+            color: var(--text);
+        }
+        .tb-rate {
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Inter', sans-serif;
+        }
+        .tb-pct {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ===== SRT TABLE ===== */
+        .srt-table {
+            background: var(--bg-surface);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+        .srt-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 0.8fr;
+            gap: 8px;
+            padding: 10px 12px;
+            background: var(--bg-card);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            text-align: center;
+        }
+        .srt-header span:first-child { text-align: left; }
+        .srt-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 0.8fr;
+            gap: 8px;
+            padding: 10px 12px;
+            font-size: 12px;
+            border-bottom: 1px solid var(--border-light);
+            text-align: center;
+            align-items: center;
+        }
+        .srt-row:last-child { border-bottom: none; }
+        .srt-row.active {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid var(--success);
+        }
+        .srt-row.danger {
+            background: rgba(239, 68, 68, 0.06);
+            border-left: 3px solid var(--danger);
+        }
+        .srt-row span:first-child { text-align: left; }
+        .srt-range {
+            font-weight: 600;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+        }
+        .srt-status {
+            font-weight: 700;
+        }
+        .srt-pct {
+            font-weight: 700;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ===== MINING PAGE STYLES ===== */
+        .mining-config-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .mining-config-row:last-child { margin-bottom: 0; }
+        .mining-config-item {
+            background: var(--bg-surface);
+            border-radius: 12px;
+            padding: 12px 14px;
+            border: 1px solid var(--border-light);
+        }
+        .mining-config-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .mining-config-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+        }
+        .mining-split-card {
+            background: var(--bg-surface);
+            border-radius: 14px;
+            padding: 14px;
+            border: 1px solid var(--border-light);
+        }
+        .mining-split-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .mining-split-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .mining-split-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .mining-split-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .mining-split-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+        .mining-split-amount {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+        }
+        .mining-split-divider {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 10px 0;
+            padding-left: 18px;
+        }
+        .mining-divider-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border-light);
+        }
+        .mining-divider-icon {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .mining-info-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .mining-info-row:last-child {
+            border-bottom: none;
+        }
+        .mining-info-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .mining-info-label span:first-child {
+            font-size: 18px;
+        }
+        .mining-info-sublabel {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: 1px;
+        }
+        .mining-info-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ===== NODE PAGE STYLES ===== */
+        .node-benefit-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .node-benefit-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .node-benefit-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .node-benefit-info {
+            flex: 1;
+            margin-left: 10px;
+        }
+        .node-benefit-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .node-benefit-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+        .node-benefit-value {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: 'Inter', sans-serif;
         }
 
         /* Toast */
@@ -941,31 +1304,31 @@
                             <div class="carousel-desc">成为早期节点 | 专享分红权益</div>
                         </div>
                     </div>
-                    <!-- Slide 4 -->
+                    <!-- Slide 4: 深度驱动收益 -->
                     <div class="carousel-slide">
                         <div class="carousel-slide-bg">
                             <svg viewBox="0 0 400 180" preserveAspectRatio="none">
                                 <defs>
                                     <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#1a1a2e"/>
-                                        <stop offset="50%" style="stop-color:#1e3a5f"/>
-                                        <stop offset="100%" style="stop-color:#1a1a2e"/>
+                                        <stop offset="0%" style="stop-color:#1e1b4b"/>
+                                        <stop offset="50%" style="stop-color:#312e81"/>
+                                        <stop offset="100%" style="stop-color:#1e1b4b"/>
                                     </linearGradient>
-                                    <radialGradient id="grad4b" cx="50%" cy="50%">
-                                        <stop offset="0%" style="stop-color:rgba(245,158,11,0.15)"/>
-                                        <stop offset="100%" style="stop-color:transparent"/>
-                                    </radialGradient>
+                                    <linearGradient id="grad4b" x1="0%" y1="100%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:rgba(99,102,241,0.4)"/>
+                                        <stop offset="100%" style="stop-color:rgba(139,92,246,0.1)"/>
+                                    </linearGradient>
                                 </defs>
                                 <rect width="400" height="180" fill="url(#grad4)"/>
-                                <circle cx="200" cy="90" r="100" fill="url(#grad4b)"/>
-                                <rect x="20" y="140" width="360" height="1" fill="rgba(245,158,11,0.1)"/>
-                                <rect x="20" y="150" width="280" height="1" fill="rgba(245,158,11,0.05)"/>
+                                <circle cx="80" cy="50" r="70" fill="url(#grad4b)" opacity="0.6"/>
+                                <circle cx="340" cy="140" r="60" fill="rgba(139,92,246,0.1)"/>
+                                <path d="M0 100 Q150 80 300 100 T400 90" stroke="rgba(99,102,241,0.2)" fill="none" stroke-width="2"/>
                             </svg>
                         </div>
                         <div class="carousel-content">
-                            <div class="carousel-tag">📊 数据</div>
-                            <div class="carousel-title">累计收益突破 $3.2M</div>
-                            <div class="carousel-desc">8,642 位质押者共同见证 | 链上可查</div>
+                            <div class="carousel-tag" style="background:rgba(99,102,241,0.2); border-color:rgba(99,102,241,0.3)">🔄 复投优先</div>
+                            <div class="carousel-title">深度驱动收益</div>
+                            <div class="carousel-desc">复投优先节奏 | LP深度越强,收益越稳</div>
                         </div>
                     </div>
                 </div>
@@ -980,89 +1343,233 @@
             <!-- Balance Card -->
             <div class="balance-card">
                 <div class="balance-label">我的总资产</div>
-                <div class="balance-amount" id="balance-num">0 <span>FXH</span></div>
+                <div class="balance-amount" id="balance-num">0 <span>USDT</span></div>
                 <div class="balance-actions">
                     <button class="btn btn-primary" onclick="openStakeSheet()">
                         <span>🔒</span> 质押挖矿
                     </button>
-                    <button class="btn btn-secondary" onclick="openClaimSheet()">
-                        <span>💎</span> 领取
+                    <button class="btn btn-secondary" onclick="switchTab('trade')">
+                        <span>📈</span> 交易
                     </button>
                 </div>
             </div>
 
-            <!-- Segmented Control -->
-            <div class="segmented-control">
-                <button class="segment-btn active" onclick="switchSegment(this, 'stats')">统计</button>
-                <button class="segment-btn" onclick="switchSegment(this, 'pools')">矿池</button>
-            </div>
-
-            <!-- Stats View -->
-            <div id="view-stats">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-item-label">总锁仓价值</div>
-                        <div class="stat-item-value" style="color:var(--accent)">$12.8M</div>
-                        <div class="stat-item-change up">+15.3% ↗</div>
+            <!-- ===== SYSTEM HEALTH ===== -->
+            <div class="card" style="margin:0 16px 12px">
+                <div class="card-header">
+                    <div class="card-title">📊 系统健康程度</div>
+                    <span class="card-action" style="color:var(--success)">● 运行中</span>
+                </div>
+                <div style="padding:0 18px 18px">
+                    <!-- Health Metric 1 -->
+                    <div class="health-row">
+                        <div class="health-info">
+                            <div class="health-label">LP深度 (USDT)</div>
+                            <div class="health-desc">承载标尺：决定运行节奏</div>
+                        </div>
+                        <div class="health-value">7,056,418</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-item-label">累计收益</div>
-                        <div class="stat-item-value" style="color:var(--success)">$3.2M</div>
-                        <div class="stat-item-change up">+8.7% ↗</div>
+                    <div class="health-bar">
+                        <div class="health-bar-fill" style="width:78%"></div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-item-label">活跃质押者</div>
-                        <div class="stat-item-value">8,642</div>
-                        <div class="stat-item-change up">+234 ↗</div>
+                    <!-- Health Metric 2 -->
+                    <div class="health-row" style="margin-top:14px">
+                        <div class="health-info">
+                            <div class="health-label">RPR (24h赎回/LP)</div>
+                            <div class="health-desc">压力指标：驱动 SRT 档位</div>
+                        </div>
+                        <div class="health-value" style="color:var(--success)">0.52%</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-item-label">当前 APR</div>
-                        <div class="stat-item-value" style="color:var(--accent)">385.6%</div>
-                        <div class="stat-item-change">实时更新</div>
+                    <div class="health-bar">
+                        <div class="health-bar-fill" style="width:12%;background:linear-gradient(90deg,#10b981,#059669)"></div>
+                    </div>
+                    <!-- Health Metric 3 -->
+                    <div class="health-row" style="margin-top:14px">
+                        <div class="health-info">
+                            <div class="health-label">SRT 档位</div>
+                            <div class="health-desc">可领取到账比例随档位变化</div>
+                        </div>
+                        <div class="health-badge">极安全</div>
+                    </div>
+                    <!-- Health Metric 4 -->
+                    <div class="health-row" style="margin-top:14px">
+                        <div class="health-info">
+                            <div class="health-label">当前静态日化</div>
+                            <div class="health-desc">按LP档位表自动匹配</div>
+                        </div>
+                        <div class="health-value" style="color:var(--accent)">0.6%</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Pools View -->
-            <div id="view-pools" style="display:none">
-                <div class="pool-list">
-                    <div class="pool-item" onclick="selectPool('core')">
-                        <div class="pool-icon-wrap">🔥</div>
-                        <div class="pool-info">
-                            <div class="pool-name">FXH 核心池</div>
-                            <div class="pool-meta">锁定期 30天 · TVL $5.2M</div>
+            <!-- ===== CORE ENGINES ===== -->
+            <div class="card" style="margin:0 16px 12px">
+                <div class="card-header">
+                    <div class="card-title">⚙️ 核心机制 Core Engines</div>
+                </div>
+                <div style="padding:0 18px 18px">
+                    <!-- Engine 1 -->
+                    <div class="engine-item">
+                        <div class="engine-header">
+                            <span class="engine-icon">📐</span>
+                            <div class="engine-title">Depth Index Engine</div>
+                            <span class="engine-tag">深度定标引擎</span>
                         </div>
-                        <div class="pool-apr">
-                            <div class="pool-apr-value">385.6%</div>
-                            <div class="pool-apr-label">APR</div>
-                        </div>
+                        <div class="engine-desc">把 LP 深度变成系统的"承载指数"：深度越稳，运行越从容；深度波动，节奏自动收敛，让增长始终服从真实承载力。</div>
                     </div>
-                    <div class="pool-item" onclick="selectPool('lp')">
-                        <div class="pool-icon-wrap">💎</div>
-                        <div class="pool-info">
-                            <div class="pool-name">FXH-ETH LP</div>
-                            <div class="pool-meta">锁定期 14天 · TVL $3.8M</div>
+                    <!-- Engine 2 -->
+                    <div class="engine-item">
+                        <div class="engine-header">
+                            <span class="engine-icon">🔄</span>
+                            <div class="engine-title">Compounding Flywheel</div>
+                            <span class="engine-tag">复利飞轮</span>
                         </div>
-                        <div class="pool-apr">
-                            <div class="pool-apr-value">512.3%</div>
-                            <div class="pool-apr-label">APR</div>
-                        </div>
+                        <div class="engine-desc">把增长做成闭环：收益优先回流，持续强化深度与韧性，让系统不是靠情绪拉动，而是靠结构自我增强。</div>
                     </div>
-                    <div class="pool-item" onclick="selectPool('genesis')">
-                        <div class="pool-icon-wrap">👑</div>
-                        <div class="pool-info">
-                            <div class="pool-name">创世节点</div>
-                            <div class="pool-meta">锁定期 90天 · TVL $2.1M</div>
+                    <!-- Engine 3 -->
+                    <div class="engine-item">
+                        <div class="engine-header">
+                            <span class="engine-icon">🛡️</span>
+                            <div class="engine-title">Redemption Firewall</div>
+                            <span class="engine-tag">赎回防火墙</span>
                         </div>
-                        <div class="pool-apr">
-                            <div class="pool-apr-value">256.8%</div>
-                            <div class="pool-apr-label">APR</div>
+                        <div class="engine-desc">压力上升自动限流，降低单位时间净流出冲击；极端场景进入防御态，优先守住稳定与连续运行。</div>
+                    </div>
+                    <!-- Engine 4 -->
+                    <div class="engine-item" style="border-bottom:none;margin-bottom:0;padding-bottom:0">
+                        <div class="engine-header">
+                            <span class="engine-icon">🔥</span>
+                            <div class="engine-title">Value Sink & Burn</div>
+                            <span class="engine-tag">价值回收与销毁</span>
                         </div>
+                        <div class="engine-desc">盈利环节完成价值回收与固定比例销毁：使用越真实，回收越持续，长期强化供需结构与稀缺性。</div>
                     </div>
                 </div>
             </div>
 
+            <!-- ===== LP深度驱动收益 & TurboBoost 参数表 ===== -->
+            <div class="card" style="margin:0 16px 12px">
+                <div class="card-header">
+                    <div class="card-title">📈 LP深度驱动收益 & TurboBoost</div>
+                </div>
+                <div style="padding:0 14px 14px">
+                    <div class="turboboost-table">
+                        <div class="tb-header">
+                            <span>LP深度(USDT)</span>
+                            <span>挖矿日化</span>
+                            <span>复投比例</span>
+                            <span>赎回比例</span>
+                        </div>
+                        <div class="tb-row">
+                            <span class="tb-range">0 - 500万</span>
+                            <span class="tb-rate">0.40%</span>
+                            <span class="tb-pct">70%</span>
+                            <span class="tb-pct">30%</span>
+                        </div>
+                        <div class="tb-row">
+                            <span class="tb-range">500 - 1000万</span>
+                            <span class="tb-rate">0.60%</span>
+                            <span class="tb-pct">65%</span>
+                            <span class="tb-pct">35%</span>
+                        </div>
+                        <div class="tb-row active">
+                            <span class="tb-range">1000 - 1500万</span>
+                            <span class="tb-rate">0.70%</span>
+                            <span class="tb-pct">60%</span>
+                            <span class="tb-pct">40%</span>
+                        </div>
+                        <div class="tb-row">
+                            <span class="tb-range">1500 - 2000万</span>
+                            <span class="tb-rate">0.80%</span>
+                            <span class="tb-pct">55%</span>
+                            <span class="tb-pct">45%</span>
+                        </div>
+                        <div class="tb-row">
+                            <span class="tb-range">2000 - 2500万</span>
+                            <span class="tb-rate">0.90%</span>
+                            <span class="tb-pct">45%</span>
+                            <span class="tb-pct">55%</span>
+                        </div>
+                        <div class="tb-row">
+                            <span class="tb-range">2500 - 3000万</span>
+                            <span class="tb-rate">0.95%</span>
+                            <span class="tb-pct">40%</span>
+                            <span class="tb-pct">60%</span>
+                        </div>
+                        <div class="tb-row highlight">
+                            <span class="tb-range">>3000万</span>
+                            <span class="tb-rate">1.00%</span>
+                            <span class="tb-pct">30%</span>
+                            <span class="tb-pct">70%</span>
+                        </div>
+                    </div>
+                    <div style="font-size:11px;color:var(--text-muted);margin-top:8px;text-align:center">
+                        当前系统处于 <strong style="color:var(--accent)">1000-1500万</strong> 档位 · 日化 <strong style="color:var(--accent)">0.70%</strong>
+                    </div>
+                </div>
+            </div>
+            <!-- ===== SRT 智能赎回节流 ===== -->
+            <div class="card" style="margin:0 16px 12px">
+                <div class="card-header">
+                    <div class="card-title">🛡️ SRT 智能赎回节流</div>
+                    <span class="card-action">Smart Redemption Throttle</span>
+                </div>
+                <div style="padding:0 18px 18px">
+                    <!-- RPR 定义 -->
+                    <div style="background:var(--bg-surface);border-radius:12px;padding:12px 14px;margin-bottom:14px;border:1px solid var(--border-light)">
+                        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px">📐 指标定义（RPR）</div>
+                        <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">
+                            RPR = 过去 24 小时实际赎回金额 ÷ LP 底池（TWAP）
+                        </div>
+                        <div style="font-size:11px;color:var(--text-muted);margin-top:4px">
+                            当前 RPR: <strong style="color:var(--success)">0.52%</strong> · 系统处于 <strong style="color:var(--success)">极安全</strong> 状态
+                        </div>
+                    </div>
 
+                    <!-- SRT 参数表 -->
+                    <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px">⚡ SRT 参数表（可领取到账比例）</div>
+                    <div class="srt-table">
+                        <div class="srt-header">
+                            <span>24h 赎回 / LP</span>
+                            <span>系统状态</span>
+                            <span>可领取比例</span>
+                        </div>
+                        <div class="srt-row">
+                            <span class="srt-range">&lt;2%</span>
+                            <span class="srt-status" style="color:var(--success)">极安全</span>
+                            <span class="srt-pct">100%</span>
+                        </div>
+                        <div class="srt-row active">
+                            <span class="srt-range">2% - 4%</span>
+                            <span class="srt-status" style="color:var(--success)">轻微波动</span>
+                            <span class="srt-pct">90%</span>
+                        </div>
+                        <div class="srt-row">
+                            <span class="srt-range">4% - 6%</span>
+                            <span class="srt-status" style="color:var(--accent)">预警</span>
+                            <span class="srt-pct">80%</span>
+                        </div>
+                        <div class="srt-row">
+                            <span class="srt-range">6% - 8%</span>
+                            <span class="srt-status" style="color:var(--accent)">压力上升</span>
+                            <span class="srt-pct">70%</span>
+                        </div>
+                        <div class="srt-row">
+                            <span class="srt-range">8% - 10%</span>
+                            <span class="srt-status" style="color:var(--danger)">保命区</span>
+                            <span class="srt-pct">50%</span>
+                        </div>
+                        <div class="srt-row danger">
+                            <span class="srt-range">&gt;10%</span>
+                            <span class="srt-status" style="color:var(--danger)">极端防御</span>
+                            <span class="srt-pct">30%</span>
+                        </div>
+                    </div>
+                    <div style="font-size:11px;color:var(--text-muted);margin-top:8px;text-align:center">
+                        当前档位: <strong style="color:var(--success)">&lt;2% 极安全</strong> · 可领取到账 <strong style="color:var(--success)">100%</strong>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- ===== REWARDS PAGE ===== -->
@@ -1071,12 +1578,12 @@
 
             <!-- Unclaimed Rewards Card -->
             <div class="balance-card">
-                <div class="balance-label">待领取收益</div>
-                <div class="balance-amount" id="unclaimed-num" style="font-size:38px">0 <span>FXH</span></div>
+                <div class="balance-label">待领取收益 (USDT)</div>
+                <div class="balance-amount" id="unclaimed-num" style="font-size:38px">0 <span>USDT</span></div>
                 <div class="progress-track">
                     <div class="progress-fill" style="width:65%"></div>
                 </div>
-                <div style="font-size:12px;color:var(--text-muted);margin-top:4px">下次可领取: 2小时 14分</div>
+                <div style="font-size:11px;color:var(--text-muted);margin-top:2px">⚠️ USDT收益不可提现，每7天可兑换为FXH</div>
             </div>
 
             <!-- Breakdown -->
@@ -1090,7 +1597,7 @@
                                 <div style="font-size:11px;color:var(--text-muted)">核心池收益</div>
                             </div>
                         </div>
-                        <span class="detail-value highlight">986.32 FXH</span>
+                        <span class="detail-value highlight">986.32 USDT</span>
                     </div>
                     <div class="detail-row">
                         <div style="display:flex;align-items:center;gap:10px">
@@ -1100,7 +1607,7 @@
                                 <div style="font-size:11px;color:var(--text-muted)">128人团队</div>
                             </div>
                         </div>
-                        <span class="detail-value highlight">234.18 FXH</span>
+                        <span class="detail-value highlight">234.18 USDT</span>
                     </div>
                     <div class="detail-row">
                         <div style="display:flex;align-items:center;gap:10px">
@@ -1110,15 +1617,15 @@
                                 <div style="font-size:11px;color:var(--text-muted)">节点分红</div>
                             </div>
                         </div>
-                        <span class="detail-value highlight">64.06 FXH</span>
+                        <span class="detail-value highlight">64.06 USDT</span>
                     </div>
                 </div>
             </div>
 
             <!-- Action Buttons -->
             <div style="padding:0 16px;display:flex;gap:10px;margin-bottom:12px">
-                <button class="btn btn-primary" style="flex:1" onclick="claimAll()">
-                    <span>💎</span> 一键领取
+                <button class="btn btn-primary" style="flex:1" onclick="openConvertSheet()">
+                    <span>🔄</span> USDT兑换FXH
                 </button>
                 <button class="btn btn-ghost" style="flex:1" onclick="openNodeSheet()">
                     <span>🎯</span> 节点
@@ -1141,7 +1648,7 @@
                         </div>
                         <div class="pool-apr">
                             <div class="pool-apr-value" style="font-size:16px;color:var(--success)">+128.50</div>
-                            <div class="pool-apr-label">FXH</div>
+                            <div class="pool-apr-label">USDT</div>
                         </div>
                     </div>
                     <!-- Record 2 -->
@@ -1153,7 +1660,7 @@
                         </div>
                         <div class="pool-apr">
                             <div class="pool-apr-value" style="font-size:16px;color:var(--success)">+32.18</div>
-                            <div class="pool-apr-label">FXH</div>
+                            <div class="pool-apr-label">USDT</div>
                         </div>
                     </div>
                     <!-- Record 3 -->
@@ -1165,7 +1672,7 @@
                         </div>
                         <div class="pool-apr">
                             <div class="pool-apr-value" style="font-size:16px;color:var(--success)">+8.64</div>
-                            <div class="pool-apr-label">FXH</div>
+                            <div class="pool-apr-label">USDT</div>
                         </div>
                     </div>
                     <!-- Record 4 -->
@@ -1177,7 +1684,7 @@
                         </div>
                         <div class="pool-apr">
                             <div class="pool-apr-value" style="font-size:16px;color:var(--success)">+245.00</div>
-                            <div class="pool-apr-label">FXH</div>
+                            <div class="pool-apr-label">USDT</div>
                         </div>
                     </div>
                     <!-- Record 5 -->
@@ -1189,7 +1696,7 @@
                         </div>
                         <div class="pool-apr">
                             <div class="pool-apr-value" style="font-size:16px;color:var(--success)">+56.20</div>
-                            <div class="pool-apr-label">FXH</div>
+                            <div class="pool-apr-label">USDT</div>
                         </div>
                     </div>
                 </div>
@@ -1211,7 +1718,7 @@
                         </div>
                         <div class="pool-apr">
                             <div class="pool-apr-value" style="font-size:16px;color:var(--accent)">986.32</div>
-                            <div class="pool-apr-label">FXH</div>
+                            <div class="pool-apr-label">USDT</div>
                         </div>
                     </div>
                     <!-- Unclaimed 2 -->
@@ -1223,7 +1730,7 @@
                         </div>
                         <div class="pool-apr">
                             <div class="pool-apr-value" style="font-size:16px;color:var(--accent)">234.18</div>
-                            <div class="pool-apr-label">FXH</div>
+                            <div class="pool-apr-label">USDT</div>
                         </div>
                     </div>
                     <!-- Unclaimed 3 -->
@@ -1235,7 +1742,7 @@
                         </div>
                         <div class="pool-apr">
                             <div class="pool-apr-value" style="font-size:16px;color:var(--accent)">64.06</div>
-                            <div class="pool-apr-label">FXH</div>
+                            <div class="pool-apr-label">USDT</div>
                         </div>
                     </div>
                 </div>
@@ -1245,57 +1752,308 @@
         <!-- ===== MINING PAGE ===== -->
         <div class="page" id="page-mining">
             <div style="height:8px"></div>
-            <div class="card">
+
+            <!-- Mining Config Info -->
+            <div class="card" style="margin:0 16px 12px">
                 <div class="card-header">
-                    <div class="card-title">我的质押</div>
-                    <span class="card-action" onclick="showToast('刷新成功','success')">↻ 刷新</span>
+                    <div class="card-title">⛏️ 挖矿配置</div>
+                    <span class="card-action" style="color:var(--success)">● 运行中</span>
                 </div>
                 <div style="padding:0 18px 18px">
-                    <div class="detail-row">
-                        <span class="detail-label">质押数量</span>
-                        <span class="detail-value">5,000 FXH</span>
+                    <div class="mining-config-row">
+                        <div class="mining-config-item">
+                            <div class="mining-config-label">起投门槛</div>
+                            <div class="mining-config-value">100 USDT</div>
+                        </div>
+                        <div class="mining-config-item">
+                            <div class="mining-config-label">单笔范围</div>
+                            <div class="mining-config-value">100 - 10,000 USDT</div>
+                        </div>
                     </div>
-                    <div class="detail-row">
-                        <span class="detail-label">已质押天数</span>
-                        <span class="detail-value">12 / 30 天</span>
+                    <div class="mining-config-row">
+                        <div class="mining-config-item">
+                            <div class="mining-config-label">质押结构</div>
+                            <div class="mining-config-value">50% 买入 + 50% 加 LP（LP即刻销毁）</div>
+                        </div>
+                        <div class="mining-config-item">
+                            <div class="mining-config-label">质押期</div>
+                            <div class="mining-config-value">28 天</div>
+                        </div>
                     </div>
-                    <div class="detail-row">
-                        <span class="detail-label">累计收益</span>
-                        <span class="detail-value highlight">+634.28 FXH</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">当前 APR</span>
-                        <span class="detail-value highlight">385.6%</span>
+                    <div class="mining-config-row">
+                        <div class="mining-config-item">
+                            <div class="mining-config-label">有效用户</div>
+                            <div class="mining-config-value">&gt; 100 USDT（社区奖励统计）</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div style="padding:14px 16px">
-                <button class="btn btn-primary btn-lg" onclick="openStakeSheet()">
-                    <span>➕</span> 追加质押
-                </button>
+            <!-- Create Order Card -->
+            <div class="card" style="margin:0 16px 12px">
+                <div class="card-header">
+                    <div class="card-title">📝 创建订单</div>
+                </div>
+                <div style="padding:0 18px 18px">
+                    <!-- Balance -->
+                    <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px;text-align:right">
+                        余额：<strong style="color:var(--text)">0 USDT</strong>
+                    </div>
+
+                    <!-- Amount Input -->
+                    <div class="input-group" style="margin:0 0 14px">
+                        <div class="input-label">
+                            <span>输入金额（USDT）</span>
+                        </div>
+                        <div class="input-field">
+                            <span style="font-size:18px;color:var(--text-muted);font-weight:600">$</span>
+                            <input type="number" id="mining-input" placeholder="100 - 10000" oninput="calcMiningSplit(this.value)" style="font-size:20px">
+                            <div class="input-token">
+                                <span>USDT</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Split Visualization -->
+                    <div class="mining-split-card" style="margin:0 0 16px">
+                        <div class="mining-split-item">
+                            <div class="mining-split-left">
+                                <div class="mining-split-icon" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;box-shadow:0 4px 12px rgba(59,130,246,0.35);font-size:14px">💎</div>
+                                <div>
+                                    <div class="mining-split-title">买入 FXH（50%）</div>
+                                    <div class="mining-split-desc">系统自动化买入</div>
+                                </div>
+                            </div>
+                            <div class="mining-split-amount" id="mining-buy">0</div>
+                        </div>
+                        <div class="mining-split-divider">
+                            <div class="mining-divider-line"></div>
+                            <div class="mining-divider-icon" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;box-shadow:0 2px 8px rgba(99,102,241,0.4);width:24px;height:24px;font-size:12px">⚡</div>
+                            <div class="mining-divider-line"></div>
+                        </div>
+                        <div class="mining-split-item">
+                            <div class="mining-split-left">
+                                <div class="mining-split-icon" style="background:linear-gradient(135deg,#f59e0b,#ea580c);color:#fff;box-shadow:0 4px 12px rgba(245,158,11,0.35);font-size:14px">🔥</div>
+                                <div>
+                                    <div class="mining-split-title">加入 LP（50%）</div>
+                                    <div class="mining-split-desc">LP 即刻销毁（增强深度）</div>
+                                </div>
+                            </div>
+                            <div class="mining-split-amount" id="mining-lp">0</div>
+                        </div>
+                    </div>
+
+                    <!-- Lock Period -->
+                    <div class="mining-info-row">
+                        <div class="mining-info-label">
+                            <div style="width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#6366f1);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;box-shadow:0 3px 10px rgba(139,92,246,0.3);margin-right:10px">🔒</div>
+                            <div>
+                                <div>锁仓期</div>
+                                <div class="mining-info-sublabel">到期可选续投或赎回</div>
+                            </div>
+                        </div>
+                        <div class="mining-info-value">30 Days</div>
+                    </div>
+
+                    <!-- Est Yield -->
+                    <div class="mining-info-row">
+                        <div class="mining-info-label">
+                            <div style="width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;box-shadow:0 3px 10px rgba(16,185,129,0.3);margin-right:10px">📊</div>
+                            <div>
+                                <div>当前预估收益率</div>
+                                <div class="mining-info-sublabel">由系统自动调整</div>
+                            </div>
+                        </div>
+                        <div class="mining-info-value" style="color:var(--accent)">0.4 %</div>
+                    </div>
+
+                    <button class="btn btn-primary btn-lg" style="margin-top:16px" onclick="confirmMiningOrder()">
+                        <span style="font-size:20px">🚀</span> 创建订单
+                    </button>
+                </div>
+            </div>
+
+            <!-- My Active Orders -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">📋 我的订单</div>
+                    <span class="card-action">共 2 笔</span>
+                </div>
+                <div style="padding:0 0 8px">
+                    <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
+                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;box-shadow:0 4px 12px rgba(245,158,11,0.35);color:#fff">⚡</div>
+                        <div class="pool-info">
+                            <div class="pool-name">5,000 USDT · 运行中</div>
+                            <div class="pool-meta">2025-05-19 · 剩余 18 天</div>
+                        </div>
+                        <div class="pool-apr">
+                            <div class="pool-apr-value" style="font-size:16px;color:var(--accent)">+36</div>
+                            <div class="pool-apr-label">USDT</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- ===== SETTINGS PAGE ===== -->
-        <div class="page" id="page-settings">
+        <!-- ===== ME PAGE ===== -->
+        <div class="page" id="page-me">
             <div style="height:8px"></div>
-            <div class="card">
-                <div style="padding:8px 18px">
+
+            <!-- Profile Header -->
+            <div class="card" style="margin:0 16px 12px">
+                <div style="padding:18px;display:flex;align-items:center;gap:14px">
+                    <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#ea580c);display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 4px 16px rgba(234,88,12,0.3)">👤</div>
+                    <div style="flex:1">
+                        <div style="font-size:16px;font-weight:700;color:var(--text)">0x7a3c...f82e</div>
+                        <div style="font-size:12px;color:var(--text-muted);margin-top:2px">创世节点 · 128 人团队</div>
+                    </div>
+                    <button class="chip" id="wallet-btn" onclick="toggleWallet()">连接</button>
+                </div>
+            </div>
+
+            <!-- FXH Balance Card -->
+            <div class="balance-card" style="margin:0 16px 12px">
+                <div class="balance-label">FXH 代币余额</div>
+                <div class="balance-amount" id="fxh-balance-num" style="font-size:38px">12,456.78 <span>FXH</span></div>
+                <div style="font-size:12px;color:var(--text-muted);margin-top:4px">≈ $1,245.68 · 提币手续费 3%</div>
+                <div class="balance-actions" style="margin-top:14px">
+                    <button class="btn btn-primary btn-lg" style="width:100%" onclick="openWithdrawSheet()">
+                        <span>📤</span> 提现 FXH
+                    </button>
+                </div>
+            </div>
+
+            <!-- Account Data & Rewards -->
+            <div class="card" style="margin:0 16px 12px">
+                <div class="card-header">
+                    <div class="card-title">📊 账户数据</div>
+                    <span class="card-action" id="user-type-badge">有效用户</span>
+                </div>
+                <div style="padding:0 18px 14px">
                     <div class="detail-row">
-                        <div style="display:flex;align-items:center;gap:12px">
-                            <span style="font-size:24px">👛</span>
-                            <div>
-                                <div style="font-weight:700;font-size:14px">钱包地址</div>
-                                <div style="font-size:12px;color:var(--text-muted)" id="wallet-addr">未连接</div>
-                            </div>
+                        <span class="detail-label">直推人数</span>
+                        <span class="detail-value">5 人</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">直推业绩</span>
+                        <span class="detail-value highlight">26,500 USDT</span>
+                    </div>
+                    <div class="detail-row" id="team-performance-row" style="display:none">
+                        <span class="detail-label">团队业绩</span>
+                        <span class="detail-value highlight">856,420 USDT</span>
+                    </div>
+                    <div class="detail-row" style="border-bottom:none;padding-bottom:6px">
+                        <span class="detail-label">奖励类型</span>
+                        <span class="detail-value" id="reward-type">一代推荐算力收益 10%</span>
+                    </div>
+                </div>
+                <div style="padding:0 18px 18px">
+                    <div style="font-size:11px;font-weight:700;color:var(--text-muted);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:8px">🎁 奖励领取</div>
+                    <div class="stats-grid" style="padding:0">
+                        <div class="stat-item" style="padding:12px">
+                            <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">推荐奖</div>
+                            <div style="font-size:20px;font-weight:800;color:var(--text);font-family:'Inter',sans-serif;letter-spacing:-0.5px">+128 <span style="font-size:11px;color:var(--text-secondary)">USDT</span></div>
+                            <button class="btn btn-primary" style="width:100%;height:30px;font-size:12px;margin-top:8px;border-radius:8px" onclick="claimReward('推荐奖', 128, 'USDT')">领取</button>
                         </div>
-                        <button class="chip" id="wallet-btn" onclick="toggleWallet()">连接</button>
+                        <div class="stat-item" id="studio-reward" style="padding:12px; display:none;">
+                            <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">工作室</div>
+                            <div style="font-size:20px;font-weight:800;color:var(--accent);font-family:'Inter',sans-serif;letter-spacing:-0.5px">+512 <span style="font-size:11px;color:var(--text-secondary)">USDT</span></div>
+                            <button class="btn btn-ghost" style="width:100%;height:30px;font-size:12px;margin-top:8px;border-radius:8px" onclick="claimReward('工作室', 512, 'USDT')">领取</button>
+                        </div>
+                        <div class="stat-item" id="pioneer-reward" style="padding:12px; display:none;">
+                            <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">排头兵</div>
+                            <div style="font-size:20px;font-weight:800;color:var(--success);font-family:'Inter',sans-serif;letter-spacing:-0.5px">+96 <span style="font-size:11px;color:var(--text-secondary)">USDT</span></div>
+                            <button class="btn btn-ghost" style="width:100%;height:30px;font-size:12px;margin-top:8px;border-radius:8px" onclick="claimReward('排头兵', 96, 'USDT')">领取</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card">
+            <!-- Invite Section -->
+            <div class="card" style="margin:0 16px 12px">
+                <div class="card-header">
+                    <div class="card-title">🔗 我的邀请</div>
+                    <span class="card-action">128 人</span>
+                </div>
+                <div style="padding:0 18px 18px">
+                    <!-- Invite Link -->
+                    <div style="background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;margin-bottom:14px">
+                        <div style="font-size:13px;color:var(--text-secondary);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" id="invite-link">https://fxh.app/r/0x7a3c...f82e</div>
+                        <button class="chip" onclick="copyInvite()">📋 复制</button>
+                    </div>
+                    <div class="balance-actions">
+                        <button class="btn btn-primary" onclick="shareInvite()">
+                            <span>📤</span> 分享
+                        </button>
+                        <button class="btn btn-secondary" onclick="showToast('二维码已生成','success')">
+                            <span>🔲</span> 二维码
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invite Stats -->
+            <div class="stats-grid" style="padding:0 16px;margin-bottom:12px">
+                <div class="stat-item">
+                    <div class="stat-item-label">已邀请人数</div>
+                    <div class="stat-item-value">128</div>
+                    <div class="stat-item-change up">+5 本周</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-item-label">邀请奖励</div>
+                    <div class="stat-item-value" style="color:var(--accent)">2,456</div>
+                    <div class="stat-item-change">FXH</div>
+                </div>
+            </div>
+
+            <!-- Invite List -->
+            <div class="card" style="margin:0 16px 12px">
+                <div class="card-header">
+                    <div class="card-title">📋 邀请记录</div>
+                    <span class="card-action">共 128 人</span>
+                </div>
+                <div style="padding:0 0 8px">
+                    <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
+                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#1d4ed8);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🧑</div>
+                        <div class="pool-info">
+                            <div class="pool-name">0x8f2A...b3C1</div>
+                            <div class="pool-meta">2025-05-18 · 质押 5,000 USDT</div>
+                        </div>
+                        <div class="pool-apr">
+                            <div class="pool-apr-value" style="font-size:16px">+48</div>
+                            <div class="pool-apr-label">FXH</div>
+                        </div>
+                    </div>
+                    <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
+                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#be185d);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">👩</div>
+                        <div class="pool-info">
+                            <div class="pool-name">0x3cD9...e7A2</div>
+                            <div class="pool-meta">2025-05-17 · 质押 2,000 USDT</div>
+                        </div>
+                        <div class="pool-apr">
+                            <div class="pool-apr-value" style="font-size:16px">+24</div>
+                            <div class="pool-apr-label">FXH</div>
+                        </div>
+                    </div>
+                    <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
+                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#10b981,#047857);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🧑‍💻</div>
+                        <div class="pool-info">
+                            <div class="pool-name">0x1aB4...f5D8</div>
+                            <div class="pool-meta">2025-05-16 · 质押 8,000 USDT</div>
+                        </div>
+                        <div class="pool-apr">
+                            <div class="pool-apr-value" style="font-size:16px">+72</div>
+                            <div class="pool-apr-label">FXH</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="card" style="margin:0 16px 12px">
+                <div class="card-header">
+                    <div class="card-title">⚙️ 设置</div>
+                </div>
                 <div style="padding:8px 18px">
                     <div class="detail-row">
                         <span class="detail-label">自动复投</span>
@@ -1315,9 +2073,19 @@
                             <div class="toggle-knob"></div>
                         </div>
                     </div>
+                    <!-- User Type Switch (Demo) -->
+                    <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border-light)">
+                        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">身份切换 (演示)</div>
+                        <div style="display:flex;gap:6px">
+                            <button class="chip" onclick="setUserType('normal')">有效</button>
+                            <button class="chip" onclick="setUserType('studio')">工作室</button>
+                            <button class="chip" onclick="setUserType('pioneer')">排头兵</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
+            <!-- Version -->
             <div style="padding:20px 16px">
                 <div style="font-size:12px;color:var(--text-muted);text-align:center;line-height:1.8">
                     FXH Protocol v1.0<br>
@@ -1327,130 +2095,305 @@
             </div>
         </div>
 
-        <!-- ===== INVITE PAGE ===== -->
-        <div class="page" id="page-invite">
+        <!-- ===== TRADE PAGE ===== -->
+        <div class="page" id="page-trade">
             <div style="height:8px"></div>
 
-            <!-- Invite Link Card -->
-            <div class="balance-card">
-                <div class="balance-label">我的邀请链接</div>
-                <div style="background:var(--bg-surface); border:1px solid var(--border); border-radius:12px; padding:12px 14px; display:flex; align-items:center; gap:10px; margin-bottom:14px">
-                    <div style="font-size:13px; color:var(--text-secondary); flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap" id="invite-link">https://fxh.app/r/0x7a3c...f82e</div>
-                    <button class="chip" onclick="copyInvite()">📋 复制</button>
+            <!-- Trade Card -->
+            <div class="card" style="margin:0 16px 12px">
+                <div class="card-header">
+                    <div class="card-title">📈 代币交易</div>
+                    <span class="card-action" style="color:var(--success)">● 实时</span>
                 </div>
-                <div class="balance-actions">
-                    <button class="btn btn-primary" onclick="shareInvite()">
-                        <span>📤</span> 分享
-                    </button>
-                    <button class="btn btn-secondary" onclick="showToast('二维码已生成','success')">
-                        <span>🔲</span> 二维码
+                <div style="padding:0 18px 18px">
+                    <!-- From Token -->
+                    <div class="input-group" style="margin:0 0 10px">
+                        <div class="input-label">
+                            <span>支付</span>
+                            <span style="color:var(--text-muted)">余额: <strong style="color:var(--text)">12,456.78 USDT</strong></span>
+                        </div>
+                        <div class="input-field">
+                            <input type="number" id="trade-from-input" placeholder="0.00" oninput="calcTrade()">
+                            <div class="input-token" onclick="showToast('选择代币','success')">
+                                <span style="font-size:16px">💵</span>
+                                <span>USDT</span>
+                                <span style="font-size:10px">▼</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Swap Arrow -->
+                    <div style="text-align:center;margin:4px 0">
+                        <div style="width:36px;height:36px;border-radius:50%;background:var(--bg-surface);border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:all 0.2s" onclick="showToast('切换方向','success')" onmousedown="this.style.transform='rotate(180deg)'" onmouseup="this.style.transform='rotate(0deg)'">
+                            ⇅
+                        </div>
+                    </div>
+
+                    <!-- To Token -->
+                    <div class="input-group" style="margin:10px 0 14px">
+                        <div class="input-label">
+                            <span>获得</span>
+                            <span style="color:var(--text-muted)">余额: <strong style="color:var(--text)">8,642.5 FXH</strong></span>
+                        </div>
+                        <div class="input-field">
+                            <input type="number" id="trade-to-input" placeholder="0.00" readonly style="color:var(--text-secondary)">
+                            <div class="input-token" onclick="showToast('选择代币','success')">
+                                <span style="font-size:16px">⚡</span>
+                                <span>FXH</span>
+                                <span style="font-size:10px">▼</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rate Info -->
+                    <div class="card" style="margin:0 0 16px;background:var(--bg-raised)">
+                        <div style="padding:12px 14px">
+                            <div class="detail-row">
+                                <span class="detail-label">兑换比例</span>
+                                <span class="detail-value">1 USDT = 10 FXH</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">价格影响</span>
+                                <span class="detail-value" style="color:var(--success)"><0.01%</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">手续费 (0.3%)</span>
+                                <span class="detail-value" id="trade-fee">0 USDT</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">最小获得</span>
+                                <span class="detail-value" id="trade-min">0 FXH</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-lg" onclick="confirmTrade()">
+                        <span>🚀</span> 确认兑换
                     </button>
                 </div>
             </div>
 
-            <!-- Invite Stats -->
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-item-label">已邀请人数</div>
-                    <div class="stat-item-value">128</div>
-                    <div class="stat-item-change up">+5 本周</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-item-label">邀请奖励</div>
-                    <div class="stat-item-value" style="color:var(--accent)">2,456</div>
-                    <div class="stat-item-change">FXH</div>
-                </div>
-            </div>
-
-            <!-- Invite List -->
+            <!-- Recent Trades -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">邀请记录</div>
-                    <span class="card-action">共 128 人</span>
+                    <div class="card-title">🕐 近期交易</div>
+                    <span class="card-action">链上可查</span>
                 </div>
                 <div style="padding:0 0 8px">
-                    <!-- Invite Item 1 -->
-                    <div class="pool-item" style="margin:0 12px 8px; border-radius:14px">
-                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#1d4ed8);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🧑</div>
+                    <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
+                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(245,158,11,0.15)">💱</div>
                         <div class="pool-info">
-                            <div class="pool-name">0x8f2A...b3C1</div>
-                            <div class="pool-meta">2025-05-18 · 质押 5,000 FXH</div>
+                            <div class="pool-name">USDT → FXH</div>
+                            <div class="pool-meta">2025-05-19 14:32 · 0x7a3c...f82e</div>
                         </div>
                         <div class="pool-apr">
-                            <div class="pool-apr-value" style="font-size:16px">+48</div>
-                            <div class="pool-apr-label">FXH 奖励</div>
+                            <div class="pool-apr-value" style="font-size:16px;color:var(--accent)">+1,000</div>
+                            <div class="pool-apr-label">FXH</div>
                         </div>
                     </div>
-                    <!-- Invite Item 2 -->
-                    <div class="pool-item" style="margin:0 12px 8px; border-radius:14px">
-                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#be185d);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">👩</div>
+                    <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
+                        <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-ghost);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid rgba(245,158,11,0.15)">💱</div>
                         <div class="pool-info">
-                            <div class="pool-name">0x3cD9...e7A2</div>
-                            <div class="pool-meta">2025-05-17 · 质押 2,000 FXH</div>
+                            <div class="pool-name">FXH → USDT</div>
+                            <div class="pool-meta">2025-05-18 09:15 · 0x7a3c...f82e</div>
                         </div>
                         <div class="pool-apr">
-                            <div class="pool-apr-value" style="font-size:16px">+24</div>
-                            <div class="pool-apr-label">FXH 奖励</div>
-                        </div>
-                    </div>
-                    <!-- Invite Item 3 -->
-                    <div class="pool-item" style="margin:0 12px 8px; border-radius:14px">
-                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#10b981,#047857);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🧑‍💻</div>
-                        <div class="pool-info">
-                            <div class="pool-name">0x1aB4...f5D8</div>
-                            <div class="pool-meta">2025-05-16 · 质押 8,000 FXH</div>
-                        </div>
-                        <div class="pool-apr">
-                            <div class="pool-apr-value" style="font-size:16px">+72</div>
-                            <div class="pool-apr-label">FXH 奖励</div>
-                        </div>
-                    </div>
-                    <!-- Invite Item 4 -->
-                    <div class="pool-item" style="margin:0 12px 8px; border-radius:14px">
-                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#6d28d9);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">👨</div>
-                        <div class="pool-info">
-                            <div class="pool-name">0x9eF2...c4B7</div>
-                            <div class="pool-meta">2025-05-15 · 质押 1,500 FXH</div>
-                        </div>
-                        <div class="pool-apr">
-                            <div class="pool-apr-value" style="font-size:16px">+18</div>
-                            <div class="pool-apr-label">FXH 奖励</div>
-                        </div>
-                    </div>
-                    <!-- Invite Item 5 -->
-                    <div class="pool-item" style="margin:0 12px 8px; border-radius:14px">
-                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">👩‍🚀</div>
-                        <div class="pool-info">
-                            <div class="pool-name">0x5cE1...a9F3</div>
-                            <div class="pool-meta">2025-05-14 · 质押 10,000 FXH</div>
-                        </div>
-                        <div class="pool-apr">
-                            <div class="pool-apr-value" style="font-size:16px">+96</div>
-                            <div class="pool-apr-label">FXH 奖励</div>
+                            <div class="pool-apr-value" style="font-size:16px;color:var(--success)">+500</div>
+                            <div class="pool-apr-label">USDT</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- ===== NODE PAGE ===== -->
+        <div class="page" id="page-node">
+            <div style="height:8px"></div>
+
+            <!-- Node Benefits Card -->
+            <div class="card" style="margin:0 16px 12px">
+                <div class="card-header">
+                    <div class="card-title">👑 节点权益</div>
+                    <span class="card-action" style="color:var(--accent)">创世节点</span>
+                </div>
+                <div style="padding:0 18px 18px">
+                    <!-- Benefit 1 -->
+                    <div class="node-benefit-row">
+                        <div class="node-benefit-icon" style="background:rgba(245,158,11,0.15);color:var(--accent)">📈</div>
+                        <div class="node-benefit-info">
+                            <div class="node-benefit-title">每日静态收益</div>
+                            <div class="node-benefit-desc">根据 LP 深度自动匹配档位</div>
+                        </div>
+                        <div class="node-benefit-value">0.4 - 1%</div>
+                    </div>
+                    <!-- Benefit 2 -->
+                    <div class="node-benefit-row">
+                        <div class="node-benefit-icon" style="background:rgba(59,130,246,0.15);color:#3b82f6">💱</div>
+                        <div class="node-benefit-info">
+                            <div class="node-benefit-title">交易手续费</div>
+                            <div class="node-benefit-desc">平台每笔交易抽取比例</div>
+                        </div>
+                        <div class="node-benefit-value">1%</div>
+                    </div>
+                    <!-- Benefit 3 -->
+                    <div class="node-benefit-row">
+                        <div class="node-benefit-icon" style="background:rgba(16,185,129,0.15);color:var(--success)">🎯</div>
+                        <div class="node-benefit-info">
+                            <div class="node-benefit-title">盈利税</div>
+                            <div class="node-benefit-desc">收益提取时收取</div>
+                        </div>
+                        <div class="node-benefit-value">10%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Claim Section - Dividend -->
+            <div class="card" style="margin:0 16px 12px">
+                <div style="padding:16px 18px">
+                    <div style="display:flex;align-items:center;justify-content:space-between">
+                        <div style="flex:1">
+                            <div style="font-size:12px;font-weight:600;color:var(--text-muted);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:4px">💰 分红收益</div>
+                            <div style="font-size:28px;font-weight:800;color:var(--text);font-family:'Inter',sans-serif;letter-spacing:-1px">234.18 <span style="font-size:14px;font-weight:600;color:var(--text-secondary)">USDT</span></div>
+                            <div style="font-size:11px;color:var(--text-muted);margin-top:2px">待领取</div>
+                        </div>
+                        <button class="btn btn-primary" style="width:90px;height:38px;font-size:13px;border-radius:10px" onclick="claimNodeDividend()">
+                            领取
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Claim Section - Static -->
+            <div class="card" style="margin:0 16px 12px">
+                <div style="padding:16px 18px">
+                    <div style="display:flex;align-items:center;justify-content:space-between">
+                        <div style="flex:1">
+                            <div style="font-size:12px;font-weight:600;color:var(--text-muted);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:4px">📊 静态收益</div>
+                            <div style="font-size:28px;font-weight:800;color:var(--accent);font-family:'Inter',sans-serif;letter-spacing:-1px">98.64 <span style="font-size:14px;font-weight:600;color:var(--text-secondary)">USDT</span></div>
+                            <div style="font-size:11px;color:var(--text-muted);margin-top:2px">待领取</div>
+                        </div>
+                        <button class="btn btn-ghost" style="width:90px;height:38px;font-size:13px;border-radius:10px" onclick="claimNodeStatic()">
+                            领取
+                        </button>
+                    </div>
+                    <div style="margin-top:12px">
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+                            <span style="font-size:11px;color:var(--text-muted)">领取进度</span>
+                            <span style="font-size:11px;font-weight:700;color:var(--accent);font-family:'Inter',sans-serif"><span id="static-progress">0</span>/7 天</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" id="static-progress-bar" style="width:0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node Stats -->
+            <div class="stats-grid" style="padding:0 16px;margin-bottom:12px">
+                <div class="stat-item">
+                    <div class="stat-item-label">个人持有</div>
+                    <div class="stat-item-value" style="color:var(--accent)">5,000</div>
+                    <div class="stat-item-change">USDT 节点</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-item-label">旗下节点</div>
+                    <div class="stat-item-value" style="color:var(--success)">128</div>
+                    <div class="stat-item-change">人团队</div>
+                </div>
+            </div>
+
+            <!-- Team Info -->
+            <div class="card" style="margin:0 16px 12px">
+                <div class="card-header">
+                    <div class="card-title">👥 团队情况</div>
+                    <span class="card-action">团队节点: 128</span>
+                </div>
+                <div style="padding:0 18px 18px">
+                    <div class="detail-row">
+                        <span class="detail-label">团队节点数量</span>
+                        <span class="detail-value highlight">128 个</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">团队总质押</span>
+                        <span class="detail-value highlight">$856,420 USDT</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">团队累计收益</span>
+                        <span class="detail-value highlight">+12,456 USDT</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">今日新增</span>
+                        <span class="detail-value" style="color:var(--success)">+5 人</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Invites -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">🔗 我的邀请 · 直推地址</div>
+                    <span class="card-action">共 5 人</span>
+                </div>
+                <div style="padding:0 0 8px">
+                    <!-- Direct 1 -->
+                    <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
+                        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#1d4ed8);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;color:#fff">1</div>
+                        <div class="pool-info">
+                            <div class="pool-name">0x8f2A...b3C1</div>
+                            <div class="pool-meta">质押 5,000 USDT · 旗下 12 节点</div>
+                        </div>
+                        <div class="pool-apr">
+                            <div class="pool-apr-value" style="font-size:14px;color:var(--accent)">+48</div>
+                            <div class="pool-apr-label">USDT/天</div>
+                        </div>
+                    </div>
+                    <!-- Direct 2 -->
+                    <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
+                        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#be185d);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;color:#fff">2</div>
+                        <div class="pool-info">
+                            <div class="pool-name">0x3cD9...e7A2</div>
+                            <div class="pool-meta">质押 2,000 USDT · 旗下 8 节点</div>
+                        </div>
+                        <div class="pool-apr">
+                            <div class="pool-apr-value" style="font-size:14px;color:var(--accent)">+24</div>
+                            <div class="pool-apr-label">USDT/天</div>
+                        </div>
+                    </div>
+                    <!-- Direct 3 -->
+                    <div class="pool-item" style="margin:0 12px 8px;border-radius:14px">
+                        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#10b981,#047857);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;color:#fff">3</div>
+                        <div class="pool-info">
+                            <div class="pool-name">0x1aB4...f5D8</div>
+                            <div class="pool-meta">质押 8,000 USDT · 旗下 25 节点</div>
+                        </div>
+                        <div class="pool-apr">
+                            <div class="pool-apr-value" style="font-size:14px;color:var(--accent)">+72</div>
+                            <div class="pool-apr-label">USDT/天</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="sheet-overlay" id="stake-overlay" onclick="closeStakeSheet()"></div>
     <div class="sheet" id="stake-sheet">
         <div class="sheet-handle"></div>
         <div class="sheet-header">
-            <div class="sheet-title">质押 FXH</div>
+            <div class="sheet-title">质押 USDT</div>
             <button class="sheet-close" onclick="closeStakeSheet()">✕</button>
         </div>
         <div class="sheet-body">
             <div class="input-group">
                 <div class="input-label">
                     <span>质押数量</span>
-                    <span style="color:var(--text-muted)">余额: <strong style="color:var(--text)">10,000 FXH</strong></span>
+                    <span style="color:var(--text-muted)">余额: <strong style="color:var(--text)">10,000 USDT</strong></span>
                 </div>
                 <div class="input-field">
                     <input type="number" id="stake-input" placeholder="0.00" oninput="calcReward(this.value)">
                     <div class="input-token">
                         <span style="font-size:16px">⚡</span>
-                        <span>FXH</span>
+                        <span>USDT</span>
                     </div>
                 </div>
             </div>
@@ -1538,7 +2481,7 @@
         <div class="sheet-body">
             <div style="text-align:center;padding:16px 0 8px">
                 <div style="font-size:38px;font-weight:800;background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Inter',sans-serif;letter-spacing:-1px">1,284.56</div>
-                <div style="font-size:13px;color:var(--text-secondary);margin-top:4px">FXH 可领取</div>
+                <div style="font-size:13px;color:var(--text-secondary);margin-top:4px">USDT 可领取</div>
             </div>
 
             <div class="card" style="margin:0 0 18px">
@@ -1548,21 +2491,21 @@
                             <span style="font-size:20px">⚡</span>
                             <span>质押挖矿</span>
                         </div>
-                        <span class="detail-value">986.32 FXH</span>
+                        <span class="detail-value">986.32 USDT</span>
                     </div>
                     <div class="detail-row">
                         <div style="display:flex;align-items:center;gap:10px">
                             <span style="font-size:20px">👥</span>
                             <span>团队奖励</span>
                         </div>
-                        <span class="detail-value">234.18 FXH</span>
+                        <span class="detail-value">234.18 USDT</span>
                     </div>
                     <div class="detail-row">
                         <div style="display:flex;align-items:center;gap:10px">
                             <span style="font-size:20px">🎯</span>
                             <span>创世节点</span>
                         </div>
-                        <span class="detail-value">64.06 FXH</span>
+                        <span class="detail-value">64.06 USDT</span>
                     </div>
                 </div>
             </div>
@@ -1573,27 +2516,132 @@
         </div>
     </div>
 
+    <!-- ===== CONVERT SHEET (USDT -> FXH) ===== -->
+    <div class="sheet-overlay" id="convert-overlay" onclick="closeConvertSheet()"></div>
+    <div class="sheet" id="convert-sheet">
+        <div class="sheet-handle"></div>
+        <div class="sheet-header">
+            <div class="sheet-title">USDT 兑换 FXH</div>
+            <button class="sheet-close" onclick="closeConvertSheet()">✕</button>
+        </div>
+        <div class="sheet-body">
+            <div style="text-align:center;padding:16px 0 8px">
+                <div style="font-size:13px;color:var(--text-secondary)">可兑换 USDT 收益</div>
+                <div style="font-size:38px;font-weight:800;background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Inter',sans-serif;letter-spacing:-1px">1,284.56</div>
+                <div style="font-size:11px;color:var(--text-muted);margin-top:4px">⚠️ 每7天可兑换一次 · 下次兑换: 5天 12小时后</div>
+            </div>
+
+            <div class="card" style="margin:0 0 18px">
+                <div style="padding:14px 18px">
+                    <div class="detail-row">
+                        <span class="detail-label">兑换比例</span>
+                        <span class="detail-value">1 USDT = 10 FXH</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">预计获得</span>
+                        <span class="detail-value highlight">12,845.6 FXH</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">兑换周期</span>
+                        <span class="detail-value">每 7 天</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg" onclick="confirmConvert()">
+                <span>🔄</span> 确认兑换为 FXH
+            </button>
+            <div style="text-align:center;margin-top:12px;font-size:12px;color:var(--text-muted)">
+                兑换后 FXH 可直接提现或继续质押
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== WITHDRAW SHEET (FXH) ===== -->
+    <div class="sheet-overlay" id="withdraw-overlay" onclick="closeWithdrawSheet()"></div>
+    <div class="sheet" id="withdraw-sheet">
+        <div class="sheet-handle"></div>
+        <div class="sheet-header">
+            <div class="sheet-title">📤 提现 FXH</div>
+            <button class="sheet-close" onclick="closeWithdrawSheet()">✕</button>
+        </div>
+        <div class="sheet-body">
+            <div style="text-align:center;padding:16px 0 8px">
+                <div style="font-size:13px;color:var(--text-secondary)">FXH 余额</div>
+                <div style="font-size:38px;font-weight:800;background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Inter',sans-serif;letter-spacing:-1px" id="withdraw-balance-display">12,456.78</div>
+                <div style="font-size:13px;color:var(--text-secondary);margin-top:4px">≈ $1,245.68</div>
+            </div>
+
+            <div class="input-group" style="margin:0 0 12px">
+                <div class="input-label">
+                    <span>提现数量</span>
+                    <span style="color:var(--text-muted)">可用: <strong style="color:var(--text)" id="withdraw-max">12,456.78 FXH</strong></span>
+                </div>
+                <div class="input-field">
+                    <input type="number" id="withdraw-input" placeholder="0.00" oninput="calcWithdraw()" style="font-size:20px">
+                    <div class="input-token">
+                        <span>FXH</span>
+                    </div>
+                </div>
+                <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px">
+                    <button class="chip" style="font-size:11px;padding:4px 10px" onclick="setWithdrawPercent(0.25)">25%</button>
+                    <button class="chip" style="font-size:11px;padding:4px 10px" onclick="setWithdrawPercent(0.5)">50%</button>
+                    <button class="chip" style="font-size:11px;padding:4px 10px" onclick="setWithdrawPercent(0.75)">75%</button>
+                    <button class="chip" style="font-size:11px;padding:4px 10px" onclick="setWithdrawPercent(1)">全部</button>
+                </div>
+            </div>
+
+            <div class="card" style="margin:0 0 18px">
+                <div style="padding:14px 18px">
+                    <div class="detail-row">
+                        <span class="detail-label">提现数量</span>
+                        <span class="detail-value" id="withdraw-amount">0 FXH</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">手续费 (3%)</span>
+                        <span class="detail-value" id="withdraw-fee" style="color:var(--danger)">-0 FXH</span>
+                    </div>
+                    <div class="detail-row" style="border-top:1px solid var(--border-light);padding-top:10px;margin-top:6px">
+                        <span class="detail-label" style="font-weight:700;color:var(--text)">到账数量</span>
+                        <span class="detail-value highlight" id="withdraw-final" style="font-size:18px">0 FXH</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">到账金额 (预估)</span>
+                        <span class="detail-value" id="withdraw-usd">≈ $0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg" onclick="confirmWithdraw()">
+                <span>📤</span> 确认提现
+            </button>
+            <div style="text-align:center;margin-top:12px;font-size:12px;color:var(--text-muted)">
+                提币手续费 3% · 最低提现 10 FXH
+            </div>
+        </div>
+    </div>
+
     <!-- ===== TAB BAR ===== -->
     <div class="tab-bar">
         <button class="tab-item active" onclick="switchTab('home')">
             <span class="tab-icon">🏠</span>
             <span class="tab-label">首页</span>
         </button>
-        <button class="tab-item" onclick="switchTab('rewards')">
-            <span class="tab-icon">💎</span>
-            <span class="tab-label">收益</span>
-        </button>
-        <button class="tab-item" onclick="switchTab('invite')">
-            <span class="tab-icon">🔗</span>
-            <span class="tab-label">邀请</span>
-        </button>
         <button class="tab-item" onclick="switchTab('mining')">
             <span class="tab-icon">⛏️</span>
             <span class="tab-label">挖矿</span>
         </button>
-        <button class="tab-item" onclick="switchTab('settings')">
-            <span class="tab-icon">⚙️</span>
-            <span class="tab-label">设置</span>
+        <button class="tab-item" onclick="switchTab('trade')">
+            <span class="tab-icon">📈</span>
+            <span class="tab-label">交易</span>
+        </button>
+        <button class="tab-item" onclick="switchTab('node')">
+            <span class="tab-icon">👑</span>
+            <span class="tab-label">节点</span>
+        </button>
+        <button class="tab-item" onclick="switchTab('me')">
+            <span class="tab-icon">👤</span>
+            <span class="tab-label">我的</span>
         </button>
     </div>
 
@@ -1615,19 +2663,19 @@
             const gap = balanceTarget - balanceValue;
             if (gap <= 0) {
                 clearInterval(balanceTimer);
-                el.innerHTML = '12,456.78 <span>FXH</span>';
-                if (el2) el2.innerHTML = '1,284.56 <span>FXH</span>';
+                el.innerHTML = '12,456.78 <span>USDT</span>';
+                if (el2) el2.innerHTML = '1,284.56 <span>USDT</span>';
                 return;
             }
             const step = Math.max(gap * 0.15, 50);
             balanceValue = Math.min(balanceValue + step, balanceTarget);
             const val = balanceValue.toFixed(2);
             const formatted = val.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-            el.innerHTML = formatted + ' <span>FXH</span>';
+            el.innerHTML = formatted + ' <span>USDT</span>';
             // Also roll unclaimed number proportionally
             if (el2) {
                 const unclaimedVal = Math.min(balanceValue * 0.103, 1284.56);
-                el2.innerHTML = unclaimedVal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' <span>FXH</span>';
+                el2.innerHTML = unclaimedVal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' <span>USDT</span>';
             }
         }
 
@@ -1637,7 +2685,7 @@
 
         // ===== CAROUSEL =====
         let currentSlide = 0;
-        const totalSlides = 1;
+        const totalSlides = 4;
         let carouselAuto = null;
 
         function updateCarousel() {
@@ -1658,12 +2706,23 @@
         carouselAuto = null;
 
         // Tab Switching
-        // Tab Switching
         function switchTab(tab) {
+            const items = document.querySelectorAll('.tab-item');
+            const clicked = event.currentTarget;
+            const icon = clicked.querySelector('.tab-icon');
+            
+            // Animate icon pop
+            if (icon) {
+                icon.classList.remove('pop');
+                void icon.offsetWidth; // trigger reflow
+                icon.classList.add('pop');
+                setTimeout(() => icon.classList.remove('pop'), 200);
+            }
+            
+            items.forEach(t => t.classList.remove('active'));
+            clicked.classList.add('active');
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
             document.getElementById('page-' + tab).classList.add('active');
-            event.currentTarget.classList.add('active');
         }
 
         function openBindModal() {
@@ -1771,16 +2830,180 @@
             const val = document.getElementById('stake-input').value;
             if (!val || val <= 0) { showToast('请输入质押数量', 'error'); return; }
             closeStakeSheet();
-            showToast('质押成功!+' + val + ' FXH', 'success');
+            showToast('质押成功!+' + val + ' USDT', 'success');
             document.getElementById('stake-input').value = '';
             document.getElementById('daily-est').textContent = '0 FXH';
         }
         function confirmClaim() {
+            const totalUSDT = 1284.56;
+            const fxhAmount = totalUSDT * fxhRate;
+            withdrawBalance += fxhAmount;
+            document.getElementById('fxh-balance-num').innerHTML = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' <span>FXH</span>';
+            document.getElementById('withdraw-balance-display').textContent = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('withdraw-max').textContent = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' FXH';
             closeClaimSheet();
-            showToast('领取成功!+1,284.56 FXH', 'success');
+            showToast('一键领取成功! +' + fxhAmount.toFixed(2) + ' FXH (已自动兑换)', 'success');
         }
         function claimAll() {
-            showToast('领取成功!+1,284.56 FXH', 'success');
+            const totalUSDT = 1284.56;
+            const fxhAmount = totalUSDT * fxhRate;
+            withdrawBalance += fxhAmount;
+            document.getElementById('fxh-balance-num').innerHTML = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' <span>FXH</span>';
+            document.getElementById('withdraw-balance-display').textContent = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('withdraw-max').textContent = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' FXH';
+            showToast('一键领取成功! +' + fxhAmount.toFixed(2) + ' FXH (已自动兑换)', 'success');
+        }
+
+        function openConvertSheet() {
+            document.getElementById('convert-overlay').classList.add('open');
+            document.getElementById('convert-sheet').classList.add('open');
+        }
+        function closeConvertSheet() {
+            document.getElementById('convert-overlay').classList.remove('open');
+            document.getElementById('convert-sheet').classList.remove('open');
+        }
+        function confirmConvert() {
+            closeConvertSheet();
+            showToast('兑换成功!+12,845.6 FXH', 'success');
+        }
+
+        // Trade
+        function calcTrade() {
+            const val = document.getElementById('trade-from-input').value;
+            const rate = 10;
+            const feeRate = 0.003;
+            if (!val || val <= 0) {
+                document.getElementById('trade-to-input').value = '';
+                document.getElementById('trade-fee').textContent = '0 USDT';
+                document.getElementById('trade-min').textContent = '0 FXH';
+                return;
+            }
+            const toAmount = (val * rate * (1 - feeRate)).toFixed(2);
+            const fee = (val * feeRate).toFixed(4);
+            const min = (val * rate * (1 - feeRate * 2)).toFixed(2);
+            document.getElementById('trade-to-input').value = toAmount;
+            document.getElementById('trade-fee').textContent = fee + ' USDT';
+            document.getElementById('trade-min').textContent = min + ' FXH';
+        }
+        function confirmTrade() {
+            const val = document.getElementById('trade-from-input').value;
+            if (!val || val <= 0) { showToast('请输入兑换数量', 'error'); return; }
+            const toVal = document.getElementById('trade-to-input').value;
+            document.getElementById('trade-from-input').value = '';
+            document.getElementById('trade-to-input').value = '';
+            document.getElementById('trade-fee').textContent = '0 USDT';
+            document.getElementById('trade-min').textContent = '0 FXH';
+            showToast('交易成功! +' + toVal + ' FXH', 'success');
+        }
+
+        // Mining
+        function calcMiningSplit(val) {
+            const buyEl = document.getElementById('mining-buy');
+            const lpEl = document.getElementById('mining-lp');
+            if (!val || val <= 0) {
+                if (buyEl) buyEl.textContent = '0';
+                if (lpEl) lpEl.textContent = '0';
+                return;
+            }
+            const half = (val * 0.5).toFixed(0);
+            if (buyEl) buyEl.textContent = Number(half).toLocaleString();
+            if (lpEl) lpEl.textContent = Number(half).toLocaleString();
+        }
+        function confirmMiningOrder() {
+            const val = document.getElementById('mining-input').value;
+            if (!val || val < 100) { showToast('最低投入 100 USDT', 'error'); return; }
+            if (val > 10000) { showToast('单笔最高 10,000 USDT', 'error'); return; }
+            const buy = (val * 0.5).toFixed(0);
+            const lp = (val * 0.5).toFixed(0);
+            document.getElementById('mining-input').value = '';
+            document.getElementById('mining-buy').textContent = '0';
+            document.getElementById('mining-lp').textContent = '0';
+            showToast('订单创建成功! ' + buy + ' USDT 买入 + ' + lp + ' USDT LP销毁', 'success');
+        }
+
+        // Node
+        let staticClaimProgress = 0;
+        const fxhRate = 10; // 1 USDT = 10 FXH
+        function claimNodeDividend() {
+            const usdtAmount = 234.18;
+            const fxhAmount = usdtAmount * fxhRate;
+            withdrawBalance += fxhAmount;
+            document.getElementById('fxh-balance-num').innerHTML = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' <span>FXH</span>';
+            showToast('领取分红成功! +' + fxhAmount.toFixed(2) + ' FXH (已自动兑换)', 'success');
+        }
+        function claimNodeStatic() {
+            if (staticClaimProgress < 7) {
+                showToast('静态收益累积中，还需 ' + (7 - staticClaimProgress) + ' 天', 'error');
+                return;
+            }
+            staticClaimProgress = 0;
+            updateStaticProgress();
+            const usdtAmount = 98.64;
+            const fxhAmount = usdtAmount * fxhRate;
+            withdrawBalance += fxhAmount;
+            document.getElementById('fxh-balance-num').innerHTML = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' <span>FXH</span>';
+            showToast('领取静态收益成功! +' + fxhAmount.toFixed(2) + ' FXH (已自动兑换)', 'success');
+        }
+        function updateStaticProgress() {
+            const el = document.getElementById('static-progress');
+            const bar = document.getElementById('static-progress-bar');
+            const days = document.getElementById('static-days');
+            if (el) el.textContent = staticClaimProgress;
+            if (days) days.textContent = staticClaimProgress;
+            if (bar) bar.style.width = (staticClaimProgress / 7 * 100) + '%';
+        }
+        // Simulate daily progress increment (for demo)
+        setInterval(() => {
+            if (staticClaimProgress < 7) {
+                staticClaimProgress++;
+                updateStaticProgress();
+            }
+        }, 30000); // increment every 30s for demo
+
+        // User Type Display Control
+        let userType = 'normal'; // 'normal', 'studio', 'pioneer'
+        function setUserType(type) {
+            userType = type;
+            updateUserTypeDisplay();
+            showToast('切换为: ' + (type === 'normal' ? '有效用户' : type === 'studio' ? '工作室' : '排头兵'), 'success');
+        }
+        function updateUserTypeDisplay() {
+            const badge = document.getElementById('user-type-badge');
+            const teamRow = document.getElementById('team-performance-row');
+            const rewardType = document.getElementById('reward-type');
+            const studioReward = document.getElementById('studio-reward');
+            const pioneerReward = document.getElementById('pioneer-reward');
+            
+            if (userType === 'normal') {
+                if (badge) { badge.textContent = '有效用户'; badge.style.color = ''; }
+                if (rewardType) rewardType.textContent = '一代推荐算力收益 10%';
+                if (studioReward) studioReward.style.display = 'none';
+                if (pioneerReward) pioneerReward.style.display = 'none';
+                if (teamRow) teamRow.style.display = 'none';
+            } else if (userType === 'studio') {
+                if (badge) { badge.textContent = '工作室'; badge.style.color = 'var(--accent)'; }
+                if (teamRow) teamRow.style.display = 'flex';
+                if (rewardType) rewardType.textContent = '团队算力收益 5%';
+                if (studioReward) studioReward.style.display = 'block';
+                if (pioneerReward) pioneerReward.style.display = 'none';
+            } else if (userType === 'pioneer') {
+                if (badge) { badge.textContent = '排头兵'; badge.style.color = 'var(--success)'; }
+                if (teamRow) teamRow.style.display = 'flex';
+                if (rewardType) rewardType.textContent = '团队算力收益 2%';
+                if (studioReward) studioReward.style.display = 'none';
+                if (pioneerReward) pioneerReward.style.display = 'block';
+            }
+        }
+        // Initialize user type display
+        setTimeout(updateUserTypeDisplay, 500);
+
+        function claimReward(name, usdtAmount, unit) {
+            const fxhAmount = usdtAmount * fxhRate;
+            withdrawBalance += fxhAmount;
+            document.getElementById('fxh-balance-num').innerHTML = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' <span>FXH</span>';
+            document.getElementById('withdraw-balance-display').textContent = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('withdraw-max').textContent = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' FXH';
+            showToast(name + '领取成功! +' + fxhAmount.toFixed(2) + ' FXH (已自动兑换)', 'success');
         }
 
         // Wallet
@@ -1805,6 +3028,52 @@
             icon.textContent = type === 'success' ? '✅' : type === 'error' ? '❌' : 'i️';
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // Withdraw
+        let withdrawBalance = 12456.78;
+        const withdrawFeeRate = 0.03;
+        function openWithdrawSheet() {
+            document.getElementById('withdraw-overlay').classList.add('open');
+            document.getElementById('withdraw-sheet').classList.add('open');
+        }
+        function closeWithdrawSheet() {
+            document.getElementById('withdraw-overlay').classList.remove('open');
+            document.getElementById('withdraw-sheet').classList.remove('open');
+            document.getElementById('withdraw-input').value = '';
+            calcWithdraw();
+        }
+        function setWithdrawPercent(pct) {
+            const val = (withdrawBalance * pct).toFixed(2);
+            document.getElementById('withdraw-input').value = val;
+            calcWithdraw();
+        }
+        function calcWithdraw() {
+            const input = document.getElementById('withdraw-input').value;
+            const amount = parseFloat(input) || 0;
+            const fee = amount * withdrawFeeRate;
+            const final = amount - fee;
+            const usd = final * 0.1; // 1 FXH ≈ $0.1
+            document.getElementById('withdraw-amount').textContent = amount.toFixed(2) + ' FXH';
+            document.getElementById('withdraw-fee').textContent = '-' + fee.toFixed(2) + ' FXH';
+            document.getElementById('withdraw-final').textContent = final.toFixed(2) + ' FXH';
+            document.getElementById('withdraw-usd').textContent = '≈ $' + usd.toFixed(2);
+        }
+        function confirmWithdraw() {
+            const input = document.getElementById('withdraw-input').value;
+            const amount = parseFloat(input) || 0;
+            if (amount < 10) { showToast('最低提现 10 FXH', 'error'); return; }
+            if (amount > withdrawBalance) { showToast('余额不足', 'error'); return; }
+            const fee = amount * withdrawFeeRate;
+            const final = amount - fee;
+            withdrawBalance -= amount;
+            document.getElementById('fxh-balance-num').innerHTML = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' <span>FXH</span>';
+            document.getElementById('withdraw-balance-display').textContent = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('withdraw-max').textContent = withdrawBalance.toLocaleString('en', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' FXH';
+            document.getElementById('withdraw-input').value = '';
+            calcWithdraw();
+            closeWithdrawSheet();
+            showToast('提现成功! 到账 ' + final.toFixed(2) + ' FXH (手续费 ' + fee.toFixed(2) + ' FXH)', 'success');
         }
 
         // Pool
